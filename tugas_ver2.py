@@ -16,6 +16,7 @@ y=data["ECG" ] - (sum(data["ECG" ]/len(data["ECG"]))) #agar turun ke baseline
 fs=int(round(1/(data.iloc[1,2]-data.iloc[0,2])))
 jumlahdata = int(np.size(x))
 
+#LPF
 fc_lpf = 13
 fc_lpf=float(fc_lpf)
 
@@ -36,6 +37,27 @@ C1 = ((4/(T**2)) + ((2 * (math.sqrt(2))*w)/T) + (w**2))
 # BUTTERWORTH LOWPASS FILTER EQUATION
 for n in range(jumlahdata):
     lpf_ecg[n] = ((b1 * lpf_ecg[n-1]) - (C0 * lpf_ecg[n-2]) + (a0 * y[n]) + (a1 * y[n-1]) + (a0 * y[n-2])) / C1
+#fc_hpf =input("FREQUENCY CUT-OFF FOR HIGHPASS FILTER :")
+fc_hpf = 5
+fc_hpf=float(fc_hpf)
+
+#HPF
+hpf_ecg = np.zeros(np.size(lpf_ecg))
+for n in range(3):
+    hpf_ecg[-n] = hpf_ecg[0]
+
+# Coefficients of LPF
+T = 1 / fs
+w = 2 * math.pi * fc_hpf
+e0 = 4*T
+e1 = 8*T
+e2 = 4*T
+d0 = ((2*(w**2)*(T**2))-8)
+d1 = (((w**2)*(T**2)) - (2 * (math.sqrt(2)) * T * w)+4)
+d2 = (((w**2)*(T**2)) + (2 * (math.sqrt(2)) * T* w)+4)
+# BUTTERWORTH LOWPASS FILTER EQUATION
+for n in range(np.size(lpf_ecg)):
+    hpf_ecg[n] = ((e0 * lpf_ecg[n]) - (e1 * lpf_ecg[n-1]) +(e2 * lpf_ecg[n-2])-(d0 * hpf_ecg[n-1])- (d1 * hpf_ecg[n-2]))/ d2
 
 
 
