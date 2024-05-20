@@ -121,10 +121,13 @@ for n in range(ptp):
     BPM[n] = 60 / interval[n]
     temp = temp+BPM[n]
     rata = temp / (n - 1)
+    
+#TIME DOMAIN
+RR_SDNN=0
+for n in range (ptp):
+   RR_SDNN += (((selisih[n])-(60/rata))**2)
 
-
-
-
+SDNN = math.sqrt (RR_SDNN/ (ptp-1))
 
 
 
@@ -252,23 +255,31 @@ if selected == "PAGE 3":
          )
         st.plotly_chart(fig)
 if selected == "PAGE 4":
-    optimizer_options = ['NUMBERS OF R TO R CALCULATIONS', 'CALCULATION OF THE AMOUNT OF R',"BPM CALCULATIONS","SDNN"]
+    optimizer_options = ['NUMBERS OF R TO R CALCULATIONS', 'CALCULATION OF THE AMOUNT OF R',"BPM CALCULATIONS"]
     selected_optimizer = st.selectbox('Calculation of HR', optimizer_options)
                                       
     if selected_optimizer == 'NUMBERS OF R TO R CALCULATIONS':
-            st.write(ptp)
+        st.write(ptp)
     elif selected_optimizer == 'CALCULATION OF THE AMOUNT OF R':
-           st.write(j)
+        st.write(j)
     elif selected_optimizer == 'BPM CALCULATIONS':
-           st.write(rata)
+        st.write(rata)
+        
     optimizer_options1 = ['SDNN', 'RMSSD',"pNN50","SDSD"]
-    selected_optimizer = st.selectbox('Time-domain analysis', optimizer_options1)
-    if selected_optimizer1 == 'NUMBERS OF R TO R CALCULATIONS':
-            st.write(SDNN)
+    selected_optimizer1 = st.selectbox('Time-domain analysis', optimizer_options1)
     
-if selected == "PAGE 5":
-    optimizer_options = ['SDNN', 'RMSSD',"pNN50","SDSD"]
-    selected_optimizer = st.selectbox('Time-domain analysis', optimizer_options)
+    if selected_optimizer1 == 'SDNN':
+        st.write(SDNN)
+    elif selected_optimizer1 == 'RMSSD':
+        st.write(RMSSD)
+    elif selected_optimizer1 == 'pNN50':
+        st.write(pNN50)
+    elif selected_optimizer1 == 'SDSD':
+        st.write(SDSD)
+
+    
+
+
          
 
         
