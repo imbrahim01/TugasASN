@@ -165,7 +165,8 @@ n = np. arange(0,ptp,1,dtype=int)
 
 
 with st.sidebar:
-    selected = option_menu("TUGAS 1", ["Home", "Data & Graphic", "Filter","Method","Calculation","PAGE 5"], default_index=0)
+    selected = option_menu("TUGAS 1", ["Home","Ecyclopedia", "Data & Graphic", "Filter","Method","Calculation","PAGE 5"], default_index=0)
+    icons=['house', 'book', 'eye','people'], menu_icon="cast", default_index=0, orientation="vertical")
 
 if selected == "Home":
    st.title('Project ASN Kelompok 1')
@@ -178,6 +179,8 @@ if selected == "Home":
    st.markdown(new_title, unsafe_allow_html=True)
    new_title = '<p style="font-family:Georgia; color: black; font-size: 15px;">Reynard Prastya Savero - 5023211042</p>'
    st.markdown(new_title, unsafe_allow_html=True)
+if selected == "Ecyclopedia":
+    st.markdown("<h1 style='text-align: center; color: blue;'>ECYCLOPEDIA 🫀</h1>", unsafe_allow_html=True)
 
 
 if selected == "Data & Grafik":
