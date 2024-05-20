@@ -6,6 +6,7 @@ from streamlit_option_menu import option_menu
 import math
 import streamlit as st 
 from streamlit_lottie import st_lottie
+import requests
 
 ########
 column_names = ['ECG']
