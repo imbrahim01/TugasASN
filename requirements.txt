@@ -4,4 +4,4 @@ matplotlib
 plotly
 streamlit
 streamlit_option_menu
-json
+
