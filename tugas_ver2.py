@@ -14,6 +14,28 @@ x=data["elapsed time"]
 y=data["ECG" ] - (sum(data["ECG" ]/len(data["ECG"]))) #agar turun ke baseline
 
 fs = int(round(1 / (data.iloc[1, 2] - data.iloc[0, 2])))
+jumlahdata = int(np.size(x))
+
+fc_lpf =input("FREQUENCY CUT-OFF FOR LOWPASS FILTER :")
+fc_lpf=float(fc_lpf)
+
+lpf_ecg = np.zeros(jumlahdata) 
+for n in range(3):
+    lpf_ecg[-n] = lpf_ecg[0]
+    y[-n] = y[0]
+
+# Coefficients of LPF
+T = 1 / fs
+w = 2 * math.pi * fc_lpf
+a0 = w**2
+a1 = 2*(w**2)
+b1 = (8/(T**2)) - (2*(w**2))
+C0 = ((4/(T**2)) - ((2 * (math.sqrt(2))*w)/T) + (w**2))
+C1 = ((4/(T**2)) + ((2 * (math.sqrt(2))*w)/T) + (w**2))
+
+# BUTTERWORTH LOWPASS FILTER EQUATION
+for n in range(jumlahdata):
+    lpf_ecg[n] = ((b1 * lpf_ecg[n-1]) - (C0 * lpf_ecg[n-2]) + (a0 * y[n]) + (a1 * y[n-1]) + (a0 * y[n-2])) / C1
 
 
 
@@ -52,4 +74,8 @@ if selected == "PAGE 1":
 if selected == "PAGE 2":
      st.text('Nilai fs')
      st.write(fs)
+     st.text('Jumlah semua data')
+     st.write(jumlahdata)
+     st.header("LPF")
+     fc_lpf = st.number_input("FREQUENCY CUT-OFF FOR LOWPASS FILTER :", value=0)
      
