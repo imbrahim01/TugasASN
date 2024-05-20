@@ -257,6 +257,8 @@ if selected == "PAGE 4":
             st.write(ptp)
     elif selected_optimizer == 'CALCULATION OF THE AMOUNT OF R':
            st.write(j)
+    elif selected_optimizer == 'BPM CALCULATIONS':
+           st.write(rata)
          
 
         
