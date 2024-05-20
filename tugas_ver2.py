@@ -142,7 +142,7 @@ if selected == "PAGE 2":
      st.plotly_chart(fig_HPF)
 if selected == "PAGE 3":
 
-    optimizer_options = ['',drv', 'sqr',"mav"]
+    optimizer_options = ['','drv', 'sqr',"mav"]
     selected_optimizer = st.selectbox('pilih metode', optimizer_options)
     
     if selected_optimizer == 'drv':
