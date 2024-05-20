@@ -152,6 +152,14 @@ for n in range (ptp):
   RR_SDSD += (((abs(selisih[n]-selisih[n+1]))-RRdif)**2)
 SDSD = math.sqrt(RR_SDSD/(ptp-2))
 
+bpm_rr = np.zeros(ptp)
+for n in range (ptp):
+  bpm_rr[n] = 60/selisih[n]
+  if bpm_rr [n]>100:
+    bpm_rr[n]=rata
+bpm_rr
+n = np. arange(0,ptp,1,dtype=int)
+
 
 
 
@@ -301,6 +309,15 @@ if selected == "PAGE 4":
         st.write(pNN50)
     elif selected_optimizer1 == 'SDSD':
         st.write(SDSD)
+fig_Tachogram = go.Figure(data=go.Scatter(x=n, y=bpm_rr, mode='lines'))
+fig_Tachogram.update_layout(
+    title="TACHOGRAM",
+    xaxis_title="n",
+    yaxis_title="BPM",
+    xaxis=dict(showline=True, showgrid=True),
+    yaxis=dict(showline=True, showgrid=True)
+)
+st.plotly_chart(fig_Tachogram)
 
     
 
