@@ -203,10 +203,10 @@ if selected == "Ecyclopedia":
     speed = 1,
     reverse= False,
     loop = True,
-    quality: "Low"
-    height: Optional[int] = None,
-    width: Optional[int] = None,
-    key: Optional[str] = None,
+    quality= "High",
+    height= None,
+    width None,
+    key = None,
     )
     st_lottie(lottie_animation)
 
