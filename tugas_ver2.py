@@ -155,7 +155,7 @@ if selected == "PAGE 2":
      st.plotly_chart(fig_HPF)
 if selected == "PAGE 3":
 
-    optimizer_options = ['','drv', 'sqr',"mav"]
+    optimizer_options = ['','drv', 'sqr',"mav",'THRESHOLDING']
     selected_optimizer = st.selectbox('pilih metode', optimizer_options)
     
     if selected_optimizer == 'drv':
@@ -194,27 +194,29 @@ if selected == "PAGE 3":
         )
         st.header("MAV")
         st.plotly_chart(fig_mav)
-if selected == "PAGE 4":
-    fig = go.Figure(data=go.Scatter(x=x[0:4000], y=y[0:4000], mode='lines'))
-    fig.update_layout(
+    elif selected_optimizer == 'THRESHOLDING':
+        fig = go.Figure(data=go.Scatter(x=x[0:4000], y=y[0:4000], mode='lines'))
+        fig.update_layout(
         title="RAW SIGNAL",
         xaxis_title="Elapsed Time",
         yaxis_title="Amplitude (mV)",
         xaxis=dict(showline=True, showgrid=True),
         yaxis=dict(showline=True, showgrid=True)
-    )
-    st.subheader("THRESHOLDING")
-    st.plotly_chart(fig)
+        )
+        st.subheader("THRESHOLDING")
+        st.plotly_chart(fig)
     
-    fig = go.Figure(data=go.Scatter(x=x[0:4000], y=thrqrs[0:4000], mode='lines'))
-    fig.update_layout(
+       fig = go.Figure(data=go.Scatter(x=x[0:4000], y=thrqrs[0:4000], mode='lines'))
+        fig.update_layout(
         title="SIGNAL THRESHOLD",
         xaxis_title="Time",
         yaxis_title="Amplitude",
         xaxis=dict(showline=True,showgrid=True),
         yaxis=dict(showline=True,showgrid=True)  
-    )
-    st.plotly_chart(fig)
+         )
+        st.plotly_chart(fig)
+         
+
         
 
 
