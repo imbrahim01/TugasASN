@@ -179,7 +179,7 @@ if selected == "Home":
    new_title = '<p style="font-family:Georgia; color: black; font-size: 15px;">Reynard Prastya Savero - 5023211042</p>'
    st.markdown(new_title, unsafe_allow_html=True)
 if selected == "Ecyclopedia":
-    st.markdown("<h1 style='text-align: center; color: red;'>ECYCLOPEDIA 🫀</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: red;'>🫀ECYCLOPEDIA </h1>", unsafe_allow_html=True)
     new_title = '<p style="font-family:Georgia; color:blue; font-size: 23px; text-align: center;">Apa yang dimaksud HRV?</p>'
     st.markdown(new_title, unsafe_allow_html=True)
 
