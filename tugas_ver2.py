@@ -255,6 +255,8 @@ if selected == "PAGE 4":
                                       
     if selected_optimizer == 'NUMBERS OF R TO R CALCULATIONS':
             st.write(ptp)
+    elif selected_optimizer == 'CALCULATION OF THE AMOUNT OF R':
+           st.write(j)
          
 
         
