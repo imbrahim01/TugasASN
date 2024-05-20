@@ -88,6 +88,6 @@ if selected == "PAGE 2":
         yaxis=dict(showline=True, showgrid=True)
 
      )
-     st.plotly_chart(fig)
+     st.plotly_chart(fig_LPF)
 
      
