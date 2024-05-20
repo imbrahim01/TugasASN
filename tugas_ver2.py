@@ -88,6 +88,40 @@ for n in range (np. size(mav)-1):
      thrqrs [n]=1
   elif (mav[n]<thr).all():
     thrqrs [n]=0
+      
+#NUMBERS OF R TO R CALCULATIONS
+ptp = 0
+waktu = np.zeros(np.size(thrqrs))
+selisih = np.zeros(np.size(thrqrs))
+
+for n in range(np.size(thrqrs) - 1):
+    if thrqrs[n] < thrqrs[n + 1]:
+        waktu[ptp] = n / fs;
+        selisih[ptp] = waktu[ptp] - waktu[ptp - 1]
+        ptp += 1
+ptp = ptp - 1
+
+#CALCULATION OF THE AMOUNT OF R
+j = 0
+peak = np.zeros(np.size(thrqrs))
+for n in range(np.size(thrqrs)-1):
+    if thrqrs[n] == 1 and thrqrs[n-1] == 0:
+        peak[j] = n
+        j += 1
+
+j
+
+#BPM CALCULATIONS':
+temp = 0
+interval = np.zeros(np.size(thrqrs))
+BPM = np.zeros(np.size(thrqrs))
+
+for n in range(ptp):
+    interval[n] = (peak[n] - peak[n-1]) * (1/fs)
+    BPM[n] = 60 / interval[n]
+    temp = temp+BPM[n]
+    rata = temp / (n - 1)
+rata
 
 
 
@@ -215,6 +249,12 @@ if selected == "PAGE 3":
         yaxis=dict(showline=True,showgrid=True)  
          )
         st.plotly_chart(fig)
+if selected == "PAGE 4":
+    optimizer_options = ['NUMBERS OF R TO R CALCULATIONS', 'CALCULATION OF THE AMOUNT OF R',"BPM CALCULATIONS","SDNN"]
+    selected_optimizer = st.selectbox('Calculation of HR', optimizer_options
+                                      
+    if selected_optimizer == 'NUMBERS OF R TO R CALCULATIONS':
+            st.write(ptp)
          
 
         
