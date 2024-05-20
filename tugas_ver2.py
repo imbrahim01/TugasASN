@@ -16,7 +16,16 @@ y=data["ECG" ] - (sum(data["ECG" ]/len(data["ECG"]))) #agar turun ke baseline
 fs = int(round(1 / (data.iloc[1, 2] - data.iloc[0, 2])))
 jumlahdata = int(np.size(x))
 
-fc_lpf =input("FREQUENCY CUT-OFF FOR LOWPASS FILTER :")
+# Replace the input() function with Streamlit's text_input
+fc_lpf = st.text_input("FREQUENCY CUT-OFF FOR LOWPASS FILTER:")
+
+# Ensure that the rest of the code only executes when the user has entered a value
+if fc_lpf:
+    # Convert the input to the required type, e.g., float
+    fc_lpf = float(fc_lpf)
+    
+    # Rest of your code here
+    st.write(f"The cut-off frequency for the lowpass filter is set to: {fc_lpf}")
 fc_lpf=float(fc_lpf)
 
 lpf_ecg = np.zeros(jumlahdata) 
