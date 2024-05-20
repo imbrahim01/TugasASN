@@ -26,7 +26,7 @@ if selected == "Home":
    st.text("Farhan Majid Ibrahim - 5023211049")
    st.text("Nayla Pramudhita Putri Pertama - 5023211012")
    st.text("Mohammad Rayhan Amirul Haq Siregar - 5023211045")
-    st.text("Reynard Prasetya Savero - 5023211042")
+   st.text("Reynard Prastya Savero - 5023211042")
 
 if selected == "PAGE 2":
         st.title('Data & Graphic Input')
