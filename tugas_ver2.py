@@ -166,7 +166,6 @@ n = np. arange(0,ptp,1,dtype=int)
 
 with st.sidebar:
     selected = option_menu("TUGAS 1", ["Home","Ecyclopedia", "Data & Graphic", "Filter","Method","Calculation","PAGE 5"], default_index=0)
-    icons=['house', 'book', 'eye','people'], menu_icon="cast", default_index=0, orientation="vertical")
 
 if selected == "Home":
    st.title('Project ASN Kelompok 1')
