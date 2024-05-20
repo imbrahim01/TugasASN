@@ -181,6 +181,7 @@ if selected == "Home":
 if selected == "Ecyclopedia":
     st.markdown("<h1 style='text-align: center; color: red;'>ECYCLOPEDIA 🫀</h1>", unsafe_allow_html=True)
     new_title = '<p style="font-family:Georgia; color:#FF0000; font-size: 23px;">Apa yang dimaksud HRV</p>'
+    st.markdown(new_title, unsafe_allow_html=True)
 
 
 if selected == "Data & Grafik":
