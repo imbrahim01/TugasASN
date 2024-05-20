@@ -72,10 +72,11 @@ if selected == "PAGE 1":
     st.header("Graphic Input")
     st.plotly_chart(fig_data)
 if selected == "PAGE 2":
-     new_title = '<p style="font-family:Georgia; color: black; font-size: 20px;">Nilai FS- 5023211042</p>'
+     new_title = '<p style="font-family:Georgia; color: black; font-size: 20px;">Nilai FS</p>'
      st.markdown(new_title, unsafe_allow_html=True)
      st.write(fs)
-     st.text('Jumlah semua data')
+     new_title = '<p style="font-family:Georgia; color: black; font-size: 20px;">Jumlah Semua Data</p>'
+     st.markdown(new_title, unsafe_allow_html=True)
      st.write(jumlahdata)
      st.header("LPF")
      fc_lpf = st.number_input("FREQUENCY CUT-OFF FOR LOWPASS FILTER :", value=0)
