@@ -193,14 +193,14 @@ if selected == "PAGE 1":
         xaxis=dict(showline=True, showgrid=True),
         yaxis=dict(showline=True, showgrid=True)
     )
- st.header("Graphic Input")
- st.plotly_chart(fig_data)
- new_title = '<p style="font-family:Georgia; color: black; font-size: 20px;">Nilai FS</p>'
- st.markdown(new_title, unsafe_allow_html=True)
- st.write(fs)
- new_title = '<p style="font-family:Georgia; color: black; font-size: 20px;">Jumlah Semua Data</p>'
- st.markdown(new_title, unsafe_allow_html=True)
- st.write(jumlahdata)
+    st.header("Graphic Input")
+    st.plotly_chart(fig_data)
+    new_title = '<p style="font-family:Georgia; color: black; font-size: 20px;">Nilai FS</p>'
+    st.markdown(new_title, unsafe_allow_html=True)
+    st.write(fs)
+    new_title = '<p style="font-family:Georgia; color: black; font-size: 20px;">Jumlah Semua Data</p>'
+    st.markdown(new_title, unsafe_allow_html=True)
+    st.write(jumlahdata)
 if selected == "PAGE 2":
      st.header("LPF")
 
