@@ -5,6 +5,7 @@ import plotly.graph_objs as go
 from streamlit_option_menu import option_menu
 import math
 import streamlit as st 
+import json
 
 column_names = ['ECG']
 data=pd.read_csv('ECG5minutes.txt',delimiter="\t", names=column_names)
