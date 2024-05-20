@@ -182,34 +182,16 @@ if selected == "Home":
    new_title = '<p style="font-family:Georgia; color: black; font-size: 15px;">Reynard Prastya Savero - 5023211042</p>'
    st.markdown(new_title, unsafe_allow_html=True)
 if selected == "Ecyclopedia":
-   # Function to load Lottie animation from URL
-    def load_lottieurl(url: str):
-        r = requests.get(url)
-        if r.status_code != 200:
-           return None
-        return r.json()
-
      # Main title
     st.markdown("<h1 style='text-align: center; color: red;'>🫀ECYCLOPEDIA</h1>", unsafe_allow_html=True)
-
      # Subtitle
     new_title = '<p style="font-family:Georgia; color:blue; font-size: 23px; text-align: center;">Apa yang dimaksud HRV?</p>'
     st.markdown(new_title, unsafe_allow_html=True)
+    
+    st_lottie("https://assets5.lottiefiles.com/packages/lf20_V9t630.json", height=400, width=400)
 
-     # Load Lottie animation
-    lottie_url = "https://assets5.lottiefiles.com/packages/lf20_V9t630.json"
-    lottie_animation = load_lottieurl(lottie_url)
-    st_lottie(
-    lottie_animation,
-    speed = 1,
-    reverse= False,
-    loop = True,
-    quality= "High",
-    height= 400,
-    width = 400,
-    key = None,
-    )
-    st_lottie(lottie_animation)
+
+
 
 
 if selected == "Data & Graphic":
