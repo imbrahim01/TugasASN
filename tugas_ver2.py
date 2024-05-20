@@ -155,7 +155,7 @@ for n in range (ptp):
 bpm_rr
 n = np. arange(0,ptp,1,dtype=int)
 
-'''
+
 with st.sidebar:
     selected = option_menu("TUGAS 1", ["PAGE 1", "PAGE 2", "PAGE 3","PAGE 4","PAGE 5"], default_index=0)
 
@@ -174,4 +174,3 @@ if selected == "PAGE 1":
     )
     st.header("Graphic Input")
     st.plotly_chart(fig_data)
-'''
