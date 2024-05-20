@@ -208,7 +208,7 @@ if selected == "Ecyclopedia":
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 70vh;
+        height: 30vh;
        }
       </style>
         """,
@@ -221,17 +221,6 @@ if selected == "Ecyclopedia":
         st_lottie(lottie_animation, height=400, width=400)
         st.markdown('</div>', unsafe_allow_html=True)
     
-
-
-
-
-    
-    
-
-
-
-
-
 if selected == "Data & Graphic":
     st.title('Data & Graphic Input')
     st.header("Data Input")
