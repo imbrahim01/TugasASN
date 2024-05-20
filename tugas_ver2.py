@@ -72,7 +72,8 @@ if selected == "PAGE 1":
     st.header("Graphic Input")
     st.plotly_chart(fig_data)
 if selected == "PAGE 2":
-     st.text('Nilai fs')
+     new_title = '<p style="font-family:Georgia; color: black; font-size: 20px;">Nilai FS- 5023211042</p>'
+     st.markdown(new_title, unsafe_allow_html=True)
      st.write(fs)
      st.text('Jumlah semua data')
      st.write(jumlahdata)
