@@ -13,11 +13,13 @@ data["elapsed time"] = (data["sample interval"])*(1/200)
 x=data["elapsed time"]
 y=data["ECG" ] - (sum(data["ECG" ]/len(data["ECG"]))) #agar turun ke baseline
 
+fs = int(round(1 / (data.iloc[1, 2] - data.iloc[0, 2])))
+
 
 
 
 with st.sidebar:
-    selected = option_menu("TUGAS 1", ["Home", "PAGE 1", "PAGE 3","PAGE 4","PAGE 5"], default_index=0)
+    selected = option_menu("TUGAS 1", ["Home", "PAGE 1", "PAGE 2","PAGE 3","PAGE 4"], default_index=0)
 
 if selected == "Home":
    st.title('Project ASN Kelompok 1')
@@ -47,3 +49,7 @@ if selected == "PAGE 1":
     )
     st.header("Graphic Input")
     st.plotly_chart(fig_data)
+ if selected == "PAGE 2":
+     st.text('Nilai fs')
+     st.write(fs)
+     
