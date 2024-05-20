@@ -199,7 +199,7 @@ if selected == "Ecyclopedia":
      # Load Lottie animation
     lottie_url = "https://assets5.lottiefiles.com/packages/lf20_V9t630.json"
     lottie_animation = load_lottieurl(lottie_url)
-    st_lottier(
+    st_lottie(
     speed = 1,
     reverse= False,
     loop = True,
