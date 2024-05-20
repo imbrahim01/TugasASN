@@ -28,7 +28,7 @@ if selected == "Home":
    st.text("Mohammad Rayhan Amirul Haq Siregar - 5023211045")
    st.text("Reynard Prastya Savero - 5023211042")
 
-if selected == "PAGE 2":
+if selected == "PAGE 1":
     st.title('Data & Graphic Input')
     st.header("Data Input")
     st.write(data)
