@@ -182,6 +182,12 @@ if selected == "Ecyclopedia":
     st.markdown("<h1 style='text-align: center; color: red;'>🫀ECYCLOPEDIA </h1>", unsafe_allow_html=True)
     new_title = '<p style="font-family:Georgia; color:blue; font-size: 23px; text-align: center;">Apa yang dimaksud HRV?</p>'
     st.markdown(new_title, unsafe_allow_html=True)
+    
+    with open(r"C:\Users\HP\Documents\dd\Animation - 1714030916923.json", "r") as json_file:
+    lottie_json = json.load(json_file)
+    st_lottie(lottie_json, width=500, height=500)
+
+
 
 
 if selected == "Data & Grafik":
