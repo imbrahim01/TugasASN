@@ -184,8 +184,8 @@ if selected == "Home":
 if selected == "Ecyclopedia":
    # Function to load Lottie animation from URL
     def load_lottieurl(url: str):
-    r = requests.get(url)
-    if r.status_code != 200:
+        r = requests.get(url)
+        if r.status_code != 200:
         return None
         return r.json()
 
