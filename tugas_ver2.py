@@ -29,7 +29,7 @@ if selected == "Home":
    st.text("Reynard Prastya Savero - 5023211042")
 
 if selected == "PAGE 2":
-        st.title('Data & Graphic Input')
+    st.title('Data & Graphic Input')
     st.header("Data Input")
     st.write(data)
 
