@@ -205,8 +205,8 @@ if selected == "Ecyclopedia":
     reverse= False,
     loop = True,
     quality= "High",
-    height= None,
-    width = None,
+    height= 400,
+    width = 400,
     key = None,
     )
     st_lottie(lottie_animation)
