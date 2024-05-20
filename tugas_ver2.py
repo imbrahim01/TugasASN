@@ -129,6 +129,31 @@ for n in range (ptp):
 
 SDNN = math.sqrt (RR_SDNN/ (ptp-1))
 
+RR_RMSSD=0
+for n in range (ptp):
+   RR_RMSSD += ((selisih[n+1]-selisih[n])**2)
+RMSSD =  math. sqrt (RR_RMSSD/(ptp-1))
+
+# FIND NN50 ALGORITHM
+NN50 = 0
+
+for n in range (ptp): 
+    if (abs(selisih[n+1]-selisih[n])>0.05):
+      NN50 +=1
+pNN50 = (NN50/ (ptp-1)) *100 
+
+dif = 0
+for n in range (ptp):
+  dif += abs(selisih[n]-selisih[n+1])
+RRdif = dif/(ptp-1)
+
+RR_SDSD = 0
+for n in range (ptp):
+  RR_SDSD += (((abs(selisih[n]-selisih[n+1]))-RRdif)**2)
+SDSD = math.sqrt(RR_SDSD/(ptp-2))
+
+
+
 
 
 with st.sidebar:
