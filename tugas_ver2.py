@@ -199,27 +199,18 @@ if selected == "Ecyclopedia":
      # Load Lottie animation
     lottie_url = "https://assets5.lottiefiles.com/packages/lf20_V9t630.json"
     lottie_animation = load_lottieurl(lottie_url)
+    st_lottier(
+    speed = 1,
+    reverse= False,
+    loop = True,
+    quality: "High"
+    height: Optional[int] = None,
+    width: Optional[int] = None,
+    key: Optional[str] = None,
+    )
+    st_lottie(lottie_animation)
 
-     # CSS for centering the animation
-    st.markdown(
-      """
-      <style>
-      .center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-       }
-      </style>
-        """,
-       unsafe_allow_html=True,
-      )
 
-    # Container for the animation
-    with st.container():
-        st.markdown('<div class="center">', unsafe_allow_html=True)
-        st_lottie(lottie_animation, height=450, width=450)
-        st.markdown('</div>', unsafe_allow_html=True)
-    
 if selected == "Data & Graphic":
     st.title('Data & Graphic Input')
     st.header("Data Input")
