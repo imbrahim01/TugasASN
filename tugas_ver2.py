@@ -193,6 +193,9 @@ if selected == "Ecyclopedia":
 
     # Menampilkan animasi Lottie
     st.markdown(animation_html, unsafe_allow_html=True)
+    
+
+
 
 
     
@@ -202,7 +205,7 @@ if selected == "Ecyclopedia":
 
 
 
-if selected == "Data & Grafik":
+if selected == "Data & Graphic":
     st.title('Data & Graphic Input')
     st.header("Data Input")
     st.write(data)
