@@ -203,7 +203,7 @@ if selected == "Ecyclopedia":
     speed = 1,
     reverse= False,
     loop = True,
-    quality: "High"
+    quality: "Low"
     height: Optional[int] = None,
     width: Optional[int] = None,
     key: Optional[str] = None,
