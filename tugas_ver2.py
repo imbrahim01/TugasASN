@@ -109,7 +109,7 @@ for n in range(np.size(thrqrs)-1):
         peak[j] = n
         j += 1
 
-j
+
 
 #BPM CALCULATIONS':
 temp = 0
@@ -121,7 +121,7 @@ for n in range(ptp):
     BPM[n] = 60 / interval[n]
     temp = temp+BPM[n]
     rata = temp / (n - 1)
-rata
+
 
 
 
