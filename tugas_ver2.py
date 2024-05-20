@@ -7,9 +7,7 @@ import math
 import streamlit as st 
 from streamlit_lottie import st_lottie
 
-
-
-
+########
 column_names = ['ECG']
 data=pd.read_csv('ECG5minutes.txt',delimiter="\t", names=column_names)
 data["sample interval"] = np.arange(len(data))
@@ -186,7 +184,15 @@ if selected == "Ecyclopedia":
     st.markdown("<h1 style='text-align: center; color: red;'>🫀ECYCLOPEDIA </h1>", unsafe_allow_html=True)
     new_title = '<p style="font-family:Georgia; color:blue; font-size: 23px; text-align: center;">Apa yang dimaksud HRV?</p>'
     st.markdown(new_title, unsafe_allow_html=True)
-    st_lottie("https://assets5.lottiefiles.com/packages/lf20_V9t630.json",height=400, width=400)
+    # CSS untuk memusatkan animasi Lottie
+    animation_html = """
+    <div style="display: flex; justify-content: center;">
+    <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_V9t630.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop  autoplay></lottie-player>
+    </div>
+    """
+
+    # Menampilkan animasi Lottie
+    st.markdown(animation_html, unsafe_allow_html=True)
 
 
     
