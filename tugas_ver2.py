@@ -181,18 +181,44 @@ if selected == "Home":
    new_title = '<p style="font-family:Georgia; color: black; font-size: 15px;">Reynard Prastya Savero - 5023211042</p>'
    st.markdown(new_title, unsafe_allow_html=True)
 if selected == "Ecyclopedia":
-    st.markdown("<h1 style='text-align: center; color: red;'>🫀ECYCLOPEDIA </h1>", unsafe_allow_html=True)
-    new_title = '<p style="font-family:Georgia; color:blue; font-size: 23px; text-align: center;">Apa yang dimaksud HRV?</p>'
-    st.markdown(new_title, unsafe_allow_html=True)
-    # CSS untuk memusatkan animasi Lottie
-    animation_html = """
-    <div style="display: flex; justify-content: center;">
-    <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_V9t630.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop  autoplay></lottie-player>
-    </div>
-    """
+   # Function to load Lottie animation from URL
+    def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+        return r.json()
 
-    # Menampilkan animasi Lottie
-    st.markdown(animation_html, unsafe_allow_html=True)
+     # Main title
+     st.markdown("<h1 style='text-align: center; color: red;'>🫀ECYCLOPEDIA</h1>", unsafe_allow_html=True)
+
+     # Subtitle
+     new_title = '<p style="font-family:Georgia; color:blue; font-size: 23px; text-align: center;">Apa yang dimaksud HRV?</p>'
+     st.markdown(new_title, unsafe_allow_html=True)
+
+     # Load Lottie animation
+     lottie_url = "https://assets5.lottiefiles.com/packages/lf20_V9t630.json"
+     lottie_animation = load_lottieurl(lottie_url)
+
+     # CSS for centering the animation
+     st.markdown(
+      """
+      <style>
+      .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+       }
+      </style>
+        """,
+       unsafe_allow_html=True,
+      )
+
+    # Container for the animation
+     with st.container():
+     st.markdown('<div class="center">', unsafe_allow_html=True)
+     st_lottie(lottie_animation, height=400, width=400)
+     st.markdown('</div>', unsafe_allow_html=True)
     
 
 
