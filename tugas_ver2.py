@@ -78,4 +78,16 @@ if selected == "PAGE 2":
      st.write(jumlahdata)
      st.header("LPF")
      fc_lpf = st.number_input("FREQUENCY CUT-OFF FOR LOWPASS FILTER :", value=0)
+    
+     fig_LPF = go.Figure(data=go.Scatter(x=x[0:2000], y=lpf_ecg[0:1000], mode='lines'))
+     fig_LPF.update_layout(
+        title="LPF",
+        xaxis_title="Sequence (n)",
+        yaxis_title="Amplitude",
+        xaxis=dict(showline=True, showgrid=True),
+        yaxis=dict(showline=True, showgrid=True)
+
+     )
+     st.plotly_chart(fig)
+
      
