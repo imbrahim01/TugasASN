@@ -49,7 +49,7 @@ if selected == "PAGE 1":
     )
     st.header("Graphic Input")
     st.plotly_chart(fig_data)
- if selected == "PAGE 2":
+if selected == "PAGE 2":
      st.text('Nilai fs')
      st.write(fs)
      
