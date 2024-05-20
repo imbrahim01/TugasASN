@@ -165,7 +165,7 @@ n = np. arange(0,ptp,1,dtype=int)
 
 
 with st.sidebar:
-    selected = option_menu("TUGAS 1", ["Home", "PAGE 1", "PAGE 2","PAGE 3","PAGE 4","PAGE 5"], default_index=0)
+    selected = option_menu("TUGAS 1", ["Home", "Data & Graphic", "Filter","Method","Calculation","PAGE 5"], default_index=0)
 
 if selected == "Home":
    st.title('Project ASN Kelompok 1')
@@ -180,7 +180,7 @@ if selected == "Home":
    st.markdown(new_title, unsafe_allow_html=True)
 
 
-if selected == "PAGE 1":
+if selected == "Data & Grafik":
     st.title('Data & Graphic Input')
     st.header("Data Input")
     st.write(data)
@@ -225,9 +225,9 @@ if selected == "PAGE 2":
         yaxis=dict(showline=True, showgrid=True)
      )
      st.plotly_chart(fig_HPF)
-if selected == "PAGE 3":
+if selected == "Metode":
 
-    optimizer_options = ['','drv', 'sqr',"mav",'THRESHOLDING']
+    optimizer_options = ['','Derivative', 'Squaring',"Moving Average",'THRESHOLDING']
     selected_optimizer = st.selectbox('pilih metode', optimizer_options)
     
     if selected_optimizer == 'drv':
@@ -287,7 +287,7 @@ if selected == "PAGE 3":
         yaxis=dict(showline=True,showgrid=True)  
          )
         st.plotly_chart(fig)
-if selected == "PAGE 4":
+if selected == "Calculation":
     optimizer_options = ['NUMBERS OF R TO R CALCULATIONS', 'CALCULATION OF THE AMOUNT OF R',"BPM CALCULATIONS"]
     selected_optimizer = st.selectbox('Calculation of HR', optimizer_options)
                                       
