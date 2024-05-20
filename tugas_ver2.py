@@ -194,7 +194,7 @@ if selected == "PAGE 3":
         )
         st.header("MAV")
         st.plotly_chart(fig_mav)
-if selected == "PAGE 3":
+if selected == "PAGE 4":
     fig = go.Figure(data=go.Scatter(x=x[0:4000], y=y[0:4000], mode='lines'))
     fig.update_layout(
         title="RAW SIGNAL",
