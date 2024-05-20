@@ -75,6 +75,19 @@ for n in range(np.size(sqr)):
     for i in range(w):
         mav[n] = mav[n] + sqr[n - i]
         mav[n] = mav[n] / w
+tinggi=0
+tinggi=np.zeros(np.size(mav))
+for n in range (np. size(mav) -1): 
+    if (tinggi < mav[n]) .all():
+      tinggi [n]=mav[n]
+
+thr=tinggi*0.5
+thrqrs=np.zeros(np.size(mav))
+for n in range (np. size(mav)-1):
+  if (mav[n] >= thr).all():
+     thrqrs [n]=1
+  elif (mav[n]<thr).all():
+    thrqrs [n]=0
 
 
 
@@ -181,6 +194,28 @@ if selected == "PAGE 3":
         )
         st.header("MAV")
         st.plotly_chart(fig_mav)
+if selected == "PAGE 3":
+    fig = go.Figure(data=go.Scatter(x=x[0:4000], y=y[0:4000], mode='lines'))
+    fig.update_layout(
+        title="RAW SIGNAL",
+        xaxis_title="Elapsed Time",
+        yaxis_title="Amplitude (mV)",
+        xaxis=dict(showline=True, showgrid=True),
+        yaxis=dict(showline=True, showgrid=True)
+    )
+    st.subheader("THRESHOLDING")
+    st.plotly_chart(fig)
+    
+    fig = go.Figure(data=go.Scatter(x=x[0:4000], y=thrqrs[0:4000], mode='lines'))
+    fig.update_layout(
+        title="SIGNAL THRESHOLD",
+        xaxis_title="Time",
+        yaxis_title="Amplitude",
+        xaxis=dict(showline=True,showgrid=True),
+        yaxis=dict(showline=True,showgrid=True)  
+    )
+    st.plotly_chart(fig)
+        
 
 
 
