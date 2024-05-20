@@ -309,29 +309,29 @@ if selected == "PAGE 4":
         st.write(pNN50)
     elif selected_optimizer1 == 'SDSD':
         st.write(SDSD)
-fig_Tachogram = go.Figure(data=go.Scatter(x=n, y=bpm_rr, mode='lines'))
-fig_Tachogram.update_layout(
-    title="TACHOGRAM",
-    xaxis_title="n",
-    yaxis_title="BPM",
-    xaxis=dict(showline=True, showgrid=True),
-    yaxis=dict(showline=True, showgrid=True)
-)
-st.plotly_chart(fig_Tachogram)
+  fig_Tachogram = go.Figure(data=go.Scatter(x=n, y=bpm_rr, mode='lines'))
+  fig_Tachogram.update_layout(
+      title="TACHOGRAM",
+      xaxis_title="n",
+      yaxis_title="BPM",
+      xaxis=dict(showline=True, showgrid=True),
+      yaxis=dict(showline=True, showgrid=True)
+  )
+  st.plotly_chart(fig_Tachogram)
 
-fig_histogram = go.Figure(data=go.Histogram(x=bpm_rr, nbinsx=ptp))
+  fig_histogram = go.Figure(data=go.Histogram(x=bpm_rr, nbinsx=ptp))
 
-fig_histogram.update_layout(
-    title="Histogram Interval RR",
-    xaxis_title="Interval RR",
-    yaxis_title="Banyak Data",
-    xaxis=dict(showline=True, showgrid=True),
-    yaxis=dict(showline=True, showgrid=True),
-    bargap=0.2, # Optional: Adjusts the gap between bars
-    bargroupgap=0.1, # Optional: Adjusts the gap between groups
-)
+  fig_histogram.update_layout(
+      title="Histogram Interval RR",
+      xaxis_title="Interval RR",
+      yaxis_title="Banyak Data",
+      xaxis=dict(showline=True, showgrid=True),
+      yaxis=dict(showline=True, showgrid=True),
+      bargap=0.2, # Optional: Adjusts the gap between bars
+      bargroupgap=0.1, # Optional: Adjusts the gap between groups
+  )
 
-st.plotly_chart(fig_histogram)
+  st.plotly_chart(fig_histogram)
 
     
 
