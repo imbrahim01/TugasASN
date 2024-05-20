@@ -74,7 +74,7 @@ mav = np.zeros(np.size(sqr))
 for n in range(np.size(sqr)):
     for i in range(w):
         mav[n] = mav[n] + sqr[n - i]
-        mav[n] = mav[n] / w
+     mav[n] = mav[n] / w
 tinggi=0
 tinggi=np.zeros(np.size(mav))
 for n in range (np. size(mav) -1): 
