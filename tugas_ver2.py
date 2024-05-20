@@ -184,8 +184,8 @@ if selected == "Ecyclopedia":
     st.markdown(new_title, unsafe_allow_html=True)
     
     with open(r"C:\Users\HP\Documents\dd\Animation - 1714030916923.json", "r") as json_file:
-    lottie_json = json.load(json_file)
-    st_lottie(lottie_json, width=500, height=500)
+       lottie_json = json.load(json_file)
+       st_lottie(lottie_json, width=500, height=500)
 
 
 
