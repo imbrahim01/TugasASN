@@ -5,7 +5,10 @@ import plotly.graph_objs as go
 from streamlit_option_menu import option_menu
 import math
 import streamlit as st 
-import json
+from streamlit_lottie import st_lottie
+
+
+
 
 column_names = ['ECG']
 data=pd.read_csv('ECG5minutes.txt',delimiter="\t", names=column_names)
@@ -183,13 +186,11 @@ if selected == "Ecyclopedia":
     st.markdown("<h1 style='text-align: center; color: red;'>🫀ECYCLOPEDIA </h1>", unsafe_allow_html=True)
     new_title = '<p style="font-family:Georgia; color:blue; font-size: 23px; text-align: center;">Apa yang dimaksud HRV?</p>'
     st.markdown(new_title, unsafe_allow_html=True)
+    with st.echo():
+       st_lottie("https://assets5.lottiefiles.com/packages/lf20_V9t630.json")
     
-    try:
-        with open('Animation - 1714030916923.json', 'r') as f:
-            animation_data = json.load(f)
-        st_lottie(animation_data)
-    except FileNotFoundError:
-        st.error("Animation JSON file not found.")
+    
+
 
 
 
