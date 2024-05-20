@@ -17,7 +17,7 @@ fs=int(round(1/(data.iloc[1,2]-data.iloc[0,2])))
 jumlahdata = int(np.size(x))
 
 #LPF
-fc_lpf = 13
+fc_lpf = 11
 fc_lpf=float(fc_lpf)
 
 lpf_ecg = np.zeros(jumlahdata) 
