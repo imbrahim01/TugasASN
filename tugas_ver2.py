@@ -16,7 +16,7 @@ y=data["ECG" ] - (sum(data["ECG" ]/len(data["ECG"]))) #agar turun ke baseline
 fs = int(round(1 / (data.iloc[1, 2] - data.iloc[0, 2])))
 jumlahdata = int(np.size(x))
 
-fc_lpf =13
+fc_lpf =input("FREQUENCY CUT-OFF FOR LOWPASS FILTER :")
 fc_lpf=float(fc_lpf)
 
 lpf_ecg = np.zeros(jumlahdata) 
