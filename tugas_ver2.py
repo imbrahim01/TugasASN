@@ -206,7 +206,7 @@ if selected == "PAGE 3":
         st.subheader("THRESHOLDING")
         st.plotly_chart(fig)
     
-       fig = go.Figure(data=go.Scatter(x=x[0:4000], y=thrqrs[0:4000], mode='lines'))
+        fig = go.Figure(data=go.Scatter(x=x[0:4000], y=thrqrs[0:4000], mode='lines'))
         fig.update_layout(
         title="SIGNAL THRESHOLD",
         xaxis_title="Time",
