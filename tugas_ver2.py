@@ -20,7 +20,7 @@ with st.sidebar:
     selected = option_menu("TUGAS 1", ["Home", "PAGE 1", "PAGE 3","PAGE 4","PAGE 5"], default_index=0)
 
 if selected == "Home":
-   st.title('Project ANN Multimodal Kelompok 6')
+   st.title('Project ASN Kelompok 1')
    st.subheader("Home")
    st.text("Anggota kelompok")
    st.text("Farhan Majid Ibrahim - 5023211049")
