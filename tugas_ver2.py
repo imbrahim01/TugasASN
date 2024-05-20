@@ -188,7 +188,7 @@ if selected == "Ecyclopedia":
     new_title = '<p style="font-family:Georgia; color:blue; font-size: 23px; text-align: center;">Apa yang dimaksud HRV?</p>'
     st.markdown(new_title, unsafe_allow_html=True)
     
-    st_lottie("https://assets5.lottiefiles.com/packages/lf20_V9t630.json", height=400, width=400)
+    st_lottie("https://lottie.host/50914bbf-8aa3-4ac1-8ab7-d7d7882d51d5/QVzC4aV82R.json", height=400, width=400)
 
 
 
