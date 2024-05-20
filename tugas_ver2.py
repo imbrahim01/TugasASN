@@ -142,7 +142,7 @@ if selected == "PAGE 2":
      st.plotly_chart(fig_HPF)
 if selected == "PAGE 3":
 
-    optimizer_options = ['drv', 'sqr',"mav"]
+    optimizer_options = ['',drv', 'sqr',"mav"]
     selected_optimizer = st.selectbox('pilih metode', optimizer_options)
     
     if selected_optimizer == 'drv':
@@ -157,6 +157,33 @@ if selected == "PAGE 3":
         )
         st.header("DERIVATIVE")
         st.plotly_chart(fig_DRV)
+    elif selected_optimizer == 'sqr':
+
+        fig_sqr = go.Figure(data=go.Scatter(x=x[0:1000], y=sqr[0:1000], mode='lines'))
+        fig_sqr.update_layout(
+            title="SQUARING",
+            xaxis_title="Sequence (n)",
+            yaxis_title="Amplitude",
+            xaxis=dict(showline=True, showgrid=True),
+            yaxis=dict(showline=True, showgrid=True)
+        )
+        st.header("SQUARING")
+        st.plotly_chart(fig_sqr)
+
+    elif selected_optimizer == 'mav':
+        fig_mav = go.Figure(data=go.Scatter(x=x[0:1000], y=mav[0:1000], mode='lines'))
+        fig_mav.update_layout(
+            title="MAV",
+            xaxis_title="Time",
+            yaxis_title="Amplitude",
+            xaxis=dict(showline=True, showgrid=True),
+            yaxis=dict(showline=True, showgrid=True)
+        )
+        st.header("MAV")
+        st.plotly_chart(fig_mav)
+
+
+
 
 
 
