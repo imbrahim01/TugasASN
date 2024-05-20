@@ -193,7 +193,7 @@ if selected == "Ecyclopedia":
     st.markdown("<h1 style='text-align: center; color: red;'>🫀ECYCLOPEDIA</h1>", unsafe_allow_html=True)
 
      # Subtitle
-    new_title = '<p style="font-family:Georgia; color:blue; font-size: 23px; text-align: left;">Apa yang dimaksud HRV?</p>'
+    new_title = '<p style="font-family:Georgia; color:blue; font-size: 23px; text-align: center;">Apa yang dimaksud HRV?</p>'
     st.markdown(new_title, unsafe_allow_html=True)
 
      # Load Lottie animation
@@ -217,7 +217,7 @@ if selected == "Ecyclopedia":
     # Container for the animation
     with st.container():
         st.markdown('<div class="center">', unsafe_allow_html=True)
-        st_lottie(lottie_animation, height=400, width=400)
+        st_lottie(lottie_animation, height=450, width=450)
         st.markdown('</div>', unsafe_allow_html=True)
     
 if selected == "Data & Graphic":
