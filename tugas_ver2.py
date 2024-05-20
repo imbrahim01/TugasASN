@@ -13,10 +13,10 @@ data["elapsed time"] = (data["sample interval"])*(1/200)
 x=data["elapsed time"]
 y=data["ECG" ] - (sum(data["ECG" ]/len(data["ECG"]))) #agar turun ke baseline
 
-fs=13
+fs=int(round(1/(data.iloc[1,2]-data.iloc[0,2])))
 jumlahdata = int(np.size(x))
 
-fc_lpf = st.number_input("FREQUENCY CUT-OFF FOR LOWPASS FILTER :", value=0)
+fc_lpf = 13
 fc_lpf=float(fc_lpf)
 
 lpf_ecg = np.zeros(jumlahdata) 
