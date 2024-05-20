@@ -59,6 +59,23 @@ d2 = (((w**2)*(T**2)) + (2 * (math.sqrt(2)) * T* w)+4)
 for n in range(np.size(lpf_ecg)):
     hpf_ecg[n] = ((e0 * lpf_ecg[n]) - (e1 * lpf_ecg[n-1]) +(e2 * lpf_ecg[n-2])-(d0 * hpf_ecg[n-1])- (d1 * hpf_ecg[n-2]))/ d2
 
+#DERIVATIVE
+drv=np.zeros(np.size(hpf_ecg))
+for n in range (np.size(hpf_ecg)-2):
+   drv[n]= (1/8)*(-(hpf_ecg[n-2]) - (2*hpf_ecg[n-1]) + (2*hpf_ecg[n+1]) + (hpf_ecg[n+2]))
+
+# SQUARING PROCEDURE METHOD
+sqr=np. zeros(np.size(drv) )
+for n in range (np.size(drv)):
+  sqr[n]=(drv[n])**2
+# MAV PROCEDURE METHOD
+w = 10 
+mav = np.zeros(np.size(sqr))
+for n in range(np.size(sqr)):
+    for i in range(w):
+        mav[n] = mav[n] + sqr[n - i]
+        mav[n] = mav[n] / w
+
 
 
 
@@ -113,6 +130,7 @@ if selected == "PAGE 2":
      )
      st.plotly_chart(fig_LPF)
     
+     st.header("HPF")
      fig_HPF = go.Figure(data=go.Scatter(x=x[0:2000], y=hpf_ecg[0:1000], mode='lines'))
      fig_HPF.update_layout(
         title="HPF",
@@ -122,5 +140,25 @@ if selected == "PAGE 2":
         yaxis=dict(showline=True, showgrid=True)
      )
      st.plotly_chart(fig_HPF)
+if selected == "PAGE 3":
+
+    optimizer_options = ['drv', 'sqr',"mav"]
+    selected_optimizer = st.selectbox('pilih metode', optimizer_options)
+    
+    if selected_optimizer == 'drv':
+        
+        fig_DRV = go.Figure(data=go.Scatter(x=x[9:1000], y=drv[0:1000], mode='lines'))
+        fig_DRV.update_layout(
+            title="DERIVATIVE",
+            xaxis_title="Sequence (n)",
+            yaxis_title="Amplitude",
+            xaxis=dict(showline=True, showgrid=True),
+            yaxis=dict(showline=True, showgrid=True)
+        )
+        st.header("DERIVATIVE")
+        st.plotly_chart(fig_DRV)
+
+
+
 
      
