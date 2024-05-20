@@ -251,7 +251,7 @@ if selected == "PAGE 3":
         st.plotly_chart(fig)
 if selected == "PAGE 4":
     optimizer_options = ['NUMBERS OF R TO R CALCULATIONS', 'CALCULATION OF THE AMOUNT OF R',"BPM CALCULATIONS","SDNN"]
-    selected_optimizer = st.selectbox('Calculation of HR', optimizer_options
+    selected_optimizer = st.selectbox('Calculation of HR', optimizer_options)
                                       
     if selected_optimizer == 'NUMBERS OF R TO R CALCULATIONS':
             st.write(ptp)
