@@ -25,7 +25,8 @@ if selected == "Home":
    st.text("Farhan Majid Ibrahim - 5023211049")
    st.text("Nayla Pramudhita Putri Pertama - 5023211012")
    st.text("Mohammad Rayhan Amirul Haq Siregar - 5023211045")
-   st.markdown("<h1 style='color: black; font-weight: bold;'>Reynard Prastya Savero - 5023211042</h1>", unsafe_allow_html=True)
+   new_title = '<p style="font-family:Georgia; color:#FF0000; font-size: 10px;">Reynard Prastya Savero?</p>'
+   st.markdown(new_title, unsafe_allow_html=True)
 
 
 if selected == "PAGE 1":
