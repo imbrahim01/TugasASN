@@ -157,7 +157,7 @@ for n in range (ptp):
   bpm_rr[n] = 60/selisih[n]
   if bpm_rr [n]>100:
     bpm_rr[n]=rata
-bpm_rr
+
 n = np. arange(0,ptp,1,dtype=int)
 
 
@@ -318,6 +318,20 @@ fig_Tachogram.update_layout(
     yaxis=dict(showline=True, showgrid=True)
 )
 st.plotly_chart(fig_Tachogram)
+
+fig_histogram = go.Figure(data=go.Histogram(x=bpm_rr, nbinsx=ptp))
+
+fig_histogram.update_layout(
+    title="Histogram Interval RR",
+    xaxis_title="Interval RR",
+    yaxis_title="Banyak Data",
+    xaxis=dict(showline=True, showgrid=True),
+    yaxis=dict(showline=True, showgrid=True),
+    bargap=0.2, # Optional: Adjusts the gap between bars
+    bargroupgap=0.1, # Optional: Adjusts the gap between groups
+)
+
+st.plotly_chart(fig_histogram)
 
     
 
