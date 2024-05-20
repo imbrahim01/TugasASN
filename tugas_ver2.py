@@ -217,7 +217,7 @@ if selected == "Ecyclopedia":
     # Container for the animation
     with st.container():
         st.markdown('<div class="center">', unsafe_allow_html=True)
-        st_lottie(lottie_animation, height=400, width=400)
+        st_lottie(lottie_animation, height=600, width=600)
         st.markdown('</div>', unsafe_allow_html=True)
     
 if selected == "Data & Graphic":
