@@ -26,6 +26,7 @@ if selected == "Home":
    st.text("Nayla Pramudhita Putri Pertama - 5023211012")
    st.text("Mohammad Rayhan Amirul Haq Siregar - 5023211045")
    st.text("Reynard Prastya Savero - 5023211042")
+   new_title = '<p style="font-family:Georgia; color:#FF0000; font-size: 23px;">Reynard Prastya Savero - 5023211042</p>'
 
 if selected == "PAGE 1":
     st.title('Data & Graphic Input')
