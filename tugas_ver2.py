@@ -319,7 +319,7 @@ if selected == "PAGE 4":
       )
      st.plotly_chart(fig_Tachogram)
 
-     fig_histogram = go.Figure(data=go.Histogram(x=bpm_rr, nbinsx=ptp))
+    fig_histogram = go.Figure(data=go.Histogram(x=bpm_rr, nbinsx=ptp))
 
     fig_histogram.update_layout(
       title="Histogram Interval RR",
@@ -331,7 +331,7 @@ if selected == "PAGE 4":
       bargroupgap=0.1, # Optional: Adjusts the gap between groups
       )
 
-     st.plotly_chart(fig_histogram)
+    st.plotly_chart(fig_histogram)
 
 
     
