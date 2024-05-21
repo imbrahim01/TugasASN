@@ -254,7 +254,7 @@ if selected == "Method":
     optimizer_options = ['','Derivative', 'Squaring',"Moving Average",'THRESHOLDING']
     selected_optimizer = st.selectbox('pilih metode', optimizer_options)
     
-    if selected_optimizer == 'drv':
+    if selected_optimizer == 'Derivative':
         
         fig_DRV = go.Figure(data=go.Scatter(x=x[9:1000], y=drv[0:1000], mode='lines'))
         fig_DRV.update_layout(
@@ -266,7 +266,7 @@ if selected == "Method":
         )
         st.header("DERIVATIVE")
         st.plotly_chart(fig_DRV)
-    elif selected_optimizer == 'sqr':
+    elif selected_optimizer == 'Squaring':
 
         fig_sqr = go.Figure(data=go.Scatter(x=x[0:1000], y=sqr[0:1000], mode='lines'))
         fig_sqr.update_layout(
@@ -279,7 +279,7 @@ if selected == "Method":
         st.header("SQUARING")
         st.plotly_chart(fig_sqr)
 
-    elif selected_optimizer == 'mav':
+    elif selected_optimizer == 'Moving Average':
         fig_mav = go.Figure(data=go.Scatter(x=x[0:1000], y=mav[0:1000], mode='lines'))
         fig_mav.update_layout(
             title="MAV",
