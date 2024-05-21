@@ -187,7 +187,7 @@ if selected == "Ecyclopedia":
     st.markdown("<h1 style='text-align: center; color: red;'>🫀ECYCLOPEDIA</h1>", unsafe_allow_html=True)
      # Subtitle
     new_title = '<p style="font-family:Georgia; color:blue; font-size: 23px; text-align: left;">1. Apa yang dimaksud HRV?</p>'
-    st.markdown(new_title, unsafe_allow_html=True)'
+    st.markdown(new_title, unsafe_allow_html=True)
     new_title = '<p style="font-family:Open Sans; color:#FFFFFF; font-size: 18px; text-align: justify;"><b>HRV secara sederhana adalah ukuran variasi waktu antara setiap detak jantung. Variasi ini dikendalikan oleh bagian primitif dari sistem saraf yang disebut sistem saraf otonom (ANS). Sistem ini bekerja di belakang layar, secara otomatis mengatur detak jantung, tekanan darah, pernapasan, dan pencernaan di antara tugas-tugas utama lainnya. ANS dibagi lagi menjadi dua komponen besar: sistem saraf simpatis dan parasimpatis, yang juga dikenal sebagai mekanisme fight-or-flight dan respons relaksasi.</p>'
     st.markdown(new_title, unsafe_allow_html=True)
     
