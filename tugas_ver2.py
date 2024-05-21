@@ -249,7 +249,7 @@ if selected == "Filter":
         yaxis=dict(showline=True, showgrid=True)
      )
      st.plotly_chart(fig_HPF)
-if selected == "Metode":
+if selected == "Method":
 
     optimizer_options = ['','Derivative', 'Squaring',"Moving Average",'THRESHOLDING']
     selected_optimizer = st.selectbox('pilih metode', optimizer_options)
