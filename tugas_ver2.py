@@ -195,14 +195,6 @@ if selected == "Ecyclopedia":
     st.markdown(new_title, unsafe_allow_html=True)
     new_title = '<p style="font-family:Georgia; color:black; font-size: 20px; text-align: Justify;">Jantung Anda berdetak dengan kecepatan tertentu setiap saat. Denyut tersebut berubah tergantung pada apa yang sedang Anda lakukan saat itu. Denyut jantung yang lebih lambat terjadi ketika Anda sedang beristirahat atau santai, dan denyut yang lebih cepat terjadi ketika Anda sedang aktif, stres, atau ketika Anda dalam bahaya. Terdapat variabilitas dalam detak jantung Anda berdasarkan kebutuhan tubuh dan pola pernapasan Anda. Obat-obatan tertentu dan perangkat medis - seperti alat pacu jantung - juga dapat memengaruhi variabilitas detak jantung Anda. Variabilitas detak jantung Anda juga cenderung menurun secara normal seiring bertambahnya usia.</p>'
     st.markdown(new_title, unsafe_allow_html=True)
-    
-    
-    
-    
-
-
-
-
 
 if selected == "Data & Graphic":
     st.title('Data & Graphic Input')
@@ -251,7 +243,7 @@ if selected == "Filter":
      st.plotly_chart(fig_HPF)
 if selected == "Method":
 
-    optimizer_options = ['','Derivative', 'Squaring',"Moving Average",'THRESHOLDING']
+    optimizer_options = ['','Derivative', 'Squaring',"Moving Average",'Thresholding']
     selected_optimizer = st.selectbox('pilih metode', optimizer_options)
     
     if selected_optimizer == 'Derivative':
@@ -290,7 +282,7 @@ if selected == "Method":
         )
         st.header("MAV")
         st.plotly_chart(fig_mav)
-    elif selected_optimizer == 'THRESHOLDING':
+    elif selected_optimizer == 'Thresholding':
         fig = go.Figure(data=go.Scatter(x=x[0:4000], y=y[0:4000], mode='lines'))
         fig.update_layout(
         title="RAW SIGNAL",
