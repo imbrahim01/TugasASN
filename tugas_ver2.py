@@ -198,16 +198,16 @@ if selected == "Ecyclopedia":
     st.markdown(new_title, unsafe_allow_html=True)
     
      #HTML content with YouTube videos embedded
-     content = """
-     <p><a href='#' id='Link 1'>First link</a></p>
-     <p><a href='#' id='Link 2'>Second link</a></p>
+    content = """
+     
+     
      <iframe id='Video 1' width='560' height='315' src='https://www.youtube.com/embed/dQw4w9WgXcQ' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
-     <iframe id='Video 2' width='560' height='315' src='https://www.youtube.com/embed/3JZ_D3ELwOQ' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+     
      """
 
-     clicked = click_detector(content)
+    clicked = click_detector(content)
 
-     st.markdown(f"**{clicked} clicked**" if clicked != "" else "**No click**")
+    st.markdown(f"**{clicked} clicked**" if clicked != "" else "**No click**")
 
 
 if selected == "Data & Graphic":
