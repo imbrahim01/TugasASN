@@ -344,7 +344,7 @@ if selected == "Calculation":
 )
 
  selected_optimizer1 = None  # Initialize the variable with a default value
- if sub_selected == 'Time Domain Analysis':
+if sub_selected == 'Time Domain Analysis':
      optimizer_options1 = ['SDNN', 'RMSSD', "pNN50", "SDSD"]
      selected_optimizer1 = st.selectbox('Time-domain analysis', optimizer_options1)
 
