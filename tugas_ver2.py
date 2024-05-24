@@ -334,12 +334,13 @@ if selected == "Method":
 if selected == "HRV Analysis":
     sub_selected = st.sidebar.radio(
         "Pilih Metode HRV Analysis",
-        ["Time Domain Analysis", "Risiko Penyakit Jantung", "Gejala Penyakit Jantung"],
+        ["Time Domain Analysis", "Frequency Domain analysis", "Non Liniear analysis "],
         index=0
     )
 
     if sub_selected == 'Time Domain Analysis':
         optimizer_options1 = ['SDNN', 'RMSSD', "pNN50", "SDSD"]
+        st.title(Time-domain analysis)
         selected_optimizer1 = st.selectbox('Time-domain analysis', optimizer_options1)
 
         if selected_optimizer1 == 'SDNN':
