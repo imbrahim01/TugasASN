@@ -205,9 +205,6 @@ if selected == "Ecyclopedia":
      
      """
 
-    clicked = click_detector(content)
-
-    st.markdown(f"**{clicked} clicked**" if clicked != "" else "**No click**")
 
 
 if selected == "Data & Graphic":
