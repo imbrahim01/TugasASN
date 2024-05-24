@@ -332,9 +332,15 @@ if selected == "Calculation":
     elif selected_optimizer == 'BPM CALCULATIONS':
         st.write(rata)
         
-    optimizer_options1 = ['SDNN', 'RMSSD',"pNN50","SDSD"]
-    selected_optimizer1 = st.selectbox('Time-domain analysis', optimizer_options1)
     
+    sub_selected = st.sidebar.radio(
+                        "",
+                        ["Time Domain Analysis", "Risiko Penyakit Jantung", "Gejala Penyakit Jantung"],
+                        index=0
+                    )
+    if sub_selected == 'Time Domain Analysis':
+        optimizer_options1 = ['SDNN', 'RMSSD',"pNN50","SDSD"]
+        selected_optimizer1 = st.selectbox('Time-domain analysis', optimizer_options1)
     if selected_optimizer1 == 'SDNN':
         st.write(SDNN)
     elif selected_optimizer1 == 'RMSSD':
