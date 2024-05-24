@@ -167,9 +167,11 @@ n = np. arange(0,ptp,1,dtype=int)
 
 
 
+st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> ', unsafe_allow_html=True)
 
+# Membuat menu dengan opsi HRV Analysis dan menambahkan ikon
 with st.sidebar:
-    selected = option_menu("TUGAS 1", ["Home", "Ecyclopedia", "Data & Graphic", "Filter", "Method", "HRV Analysis"], icons=['house', 'book', None, None, None, 'heartbeat'], menu_icon="cast", default_index=1)
+    selected = st.selectbox("TUGAS 1", ["Home","Ecyclopedia", "Data & Graphic", "Filter","Method","HRV Analysis"], format_func=lambda x: 'HRV Analysis' if x == 'HRV Analysis' else x + ' <i class="fa fa-heartbeat" style="color:#FF5733"></i>', index=5)
 
 
 if selected == "Home":
