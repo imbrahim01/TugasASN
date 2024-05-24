@@ -201,7 +201,7 @@ if selected == "Ecyclopedia":
     content = """
      
      
-     <iframe id='Video 1' width='560' height='315' src='https://www.youtube.com/embed/dQw4w9WgXcQ' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+     <iframe id='Video 1' width='560' height='315' src='https://youtu.be/MUhtAXPvVnE?si=ln3s7GF2mqNwTOMi' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
      
      """
     st.markdown(content, unsafe_allow_html=True)
