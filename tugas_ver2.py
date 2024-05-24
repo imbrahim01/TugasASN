@@ -339,7 +339,7 @@ if selected == "HRV Analysis":
         index=0
     )
     if sub_selected == 'Frequency Domain Analysis' or sub_selected == 'Nonlinear Analysis':
-    st.write("Select an analysis method to proceed.")
+        st.write("Select an analysis method to proceed.")
     elif sub_selected == 'Time Domain Analysis':
         optimizer_options1 = ['SDNN', 'RMSSD', "pNN50", "SDSD"]
         selected_optimizer1 = st.selectbox('Time-domain analysis', optimizer_options1)
