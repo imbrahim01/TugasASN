@@ -169,7 +169,7 @@ n = np. arange(0,ptp,1,dtype=int)
 
 
 with st.sidebar:
-    selected = option_menu("TUGAS 1", ["Home","Ecyclopedia", "Data & Graphic", "Filter","Method","Calculation"], default_index=0)
+    selected = option_menu("TUGAS 1", ["Home","Ecyclopedia", "Data & Graphic", "Filter","Method","HRV Analysis"], default_index=0)
 
 if selected == "Home":
    st.title('Project ASN Kelompok 1')
@@ -321,6 +321,7 @@ if selected == "Method":
         yaxis=dict(showline=True,showgrid=True)  
          )
         st.plotly_chart(fig)
+        
     optimizer_options = ['NUMBERS OF R TO R CALCULATIONS', 'CALCULATION OF THE AMOUNT OF R',"BPM CALCULATIONS"]
     selected_optimizer = st.selectbox('Calculation of HR', optimizer_options)
                                       
@@ -330,10 +331,11 @@ if selected == "Method":
         st.write(j)
     elif selected_optimizer == 'BPM CALCULATIONS':
         st.write(rata)
-if selected == "Calculation":
+        
+if selected == "HRV Analysis":
     sub_selected = st.sidebar.radio(
         "",
-        ["Time Domain Analysis", "Risiko Penyakit Jantung", "Gejala Penyakit Jantung"],
+        ["Time Domain Analysis", "Frequency Domain Analysis", "Nonlinear Analysis"],
         index=0
     )
     
