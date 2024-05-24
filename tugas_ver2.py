@@ -207,6 +207,7 @@ if selected == "Ecyclopedia":
 
 # Display the HTML content
     st.markdown(content, unsafe_allow_html=True)
+    st.link_button("Go to video", "https://youtu.be/MUhtAXPvVnE?si=rvYo04B8FCIcPT3I")
  # URL of the video file (replace this with your actual video file link)
     video_url = "https://youtu.be/MUhtAXPvVnE?si=rvYo04B8FCIcPT3I"
 
@@ -221,7 +222,7 @@ if selected == "Ecyclopedia":
       file_name="video.mp4",
       mime="video/mp4"
   )
- st.link_button("Go to video", "https://youtu.be/MUhtAXPvVnE?si=rvYo04B8FCIcPT3I")
+ 
 
 
 
