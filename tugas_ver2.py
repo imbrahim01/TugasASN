@@ -336,40 +336,51 @@ if selected == "Calculation":
                         ["Time Domain Analysis", "Risiko Penyakit Jantung", "Gejala Penyakit Jantung"],
                         index=0
                     )
-    if sub_selected == 'Time Domain Analysis':
-        optimizer_options1 = ['SDNN', 'RMSSD',"pNN50","SDSD"]
-        selected_optimizer1 = st.selectbox('Time-domain analysis', optimizer_options1)
-    if selected_optimizer1 == 'SDNN':
-        st.write(SDNN)
-    elif selected_optimizer1 == 'RMSSD':
-        st.write(RMSSD)
-    elif selected_optimizer1 == 'pNN50':
-        st.write(pNN50)
-    elif selected_optimizer1 == 'SDSD':
-        st.write(SDSD)
-    fig_Tachogram = go.Figure(data=go.Scatter(x=n, y=bpm_rr, mode='lines'))
-    fig_Tachogram.update_layout(
-      title="TACHOGRAM",
-      xaxis_title="n",
-      yaxis_title="BPM",
-      xaxis=dict(showline=True, showgrid=True),
-      yaxis=dict(showline=True, showgrid=True)
-      )
+ if sub_selected == 'Time Domain Analysis':
+       sub_selected = st.sidebar.radio(
+    "",
+    ["Time Domain Analysis", "Risiko Penyakit Jantung", "Gejala Penyakit Jantung"],
+    index=0
+)
+
+  selected_optimizer1 = None  # Initialize the variable with a default value
+
+  if sub_selected == 'Time Domain Analysis':
+     optimizer_options1 = ['SDNN', 'RMSSD', "pNN50", "SDSD"]
+     selected_optimizer1 = st.selectbox('Time-domain analysis', optimizer_options1)
+
+   if selected_optimizer1 == 'SDNN':
+      st.write(SDNN)
+   elif selected_optimizer1 == 'RMSSD':
+    st.write(RMSSD)
+   elif selected_optimizer1 == 'pNN50':
+    st.write(pNN50)
+   elif selected_optimizer1 == 'SDSD':
+    st.write(SDSD)
+
+   fig_Tachogram = go.Figure(data=go.Scatter(x=n, y=bpm_rr, mode='lines'))
+   fig_Tachogram.update_layout(
+    title="TACHOGRAM",
+    xaxis_title="n",
+    yaxis_title="BPM",
+    xaxis=dict(showline=True, showgrid=True),
+    yaxis=dict(showline=True, showgrid=True)
+    )
     st.plotly_chart(fig_Tachogram)
 
     fig_histogram = go.Figure(data=go.Histogram(x=bpm_rr, nbinsx=ptp))
 
     fig_histogram.update_layout(
-      title="Histogram Interval RR",
-      xaxis_title="Interval RR",
-      yaxis_title="Banyak Data",
-      xaxis=dict(showline=True, showgrid=True),
-      yaxis=dict(showline=True, showgrid=True),
-      bargap=0.2, # Optional: Adjusts the gap between bars
-      bargroupgap=0.1, # Optional: Adjusts the gap between groups
-      )
+     title="Histogram Interval RR",
+     xaxis_title="Interval RR",
+     yaxis_title="Banyak Data",
+     xaxis=dict(showline=True, showgrid=True),
+     yaxis=dict(showline=True, showgrid=True),
+     bargap=0.2,  # Optional: Adjusts the gap between bars
+     bargroupgap=0.1,  # Optional: Adjusts the gap between groups
+     )
 
-    st.plotly_chart(fig_histogram)
+     st.plotly_chart(fig_histogram)
 
 
     
