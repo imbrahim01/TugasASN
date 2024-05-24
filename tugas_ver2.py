@@ -221,6 +221,7 @@ if selected == "Ecyclopedia":
       file_name="video.mp4",
       mime="video/mp4"
   )
+ st.link_button("Go to video", "https://youtu.be/MUhtAXPvVnE?si=rvYo04B8FCIcPT3I")
 
 
 
