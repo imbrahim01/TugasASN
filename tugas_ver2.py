@@ -321,7 +321,6 @@ if selected == "Method":
         yaxis=dict(showline=True,showgrid=True)  
          )
         st.plotly_chart(fig)
-if selected == "Calculation":
     optimizer_options = ['NUMBERS OF R TO R CALCULATIONS', 'CALCULATION OF THE AMOUNT OF R',"BPM CALCULATIONS"]
     selected_optimizer = st.selectbox('Calculation of HR', optimizer_options)
                                       
@@ -331,8 +330,7 @@ if selected == "Calculation":
         st.write(j)
     elif selected_optimizer == 'BPM CALCULATIONS':
         st.write(rata)
-        
-    
+if selected == "Calculation":
     sub_selected = st.sidebar.radio(
                         "",
                         ["Time Domain Analysis", "Risiko Penyakit Jantung", "Gejala Penyakit Jantung"],
