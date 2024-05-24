@@ -339,7 +339,7 @@ if selected == "HRV Analysis":
     )
 
     if sub_selected == 'Time Domain Analysis':
-        new_title = '<p style="font-family:Georgia; color:black; font-size: 20px; text-align: center;">1.Time Domain Analysis</p>'
+        new_title = '<p style="font-family:Georgia; color:black; font-size: 25px; text-align: center;">Time Domain Analysis</p>'
         st.markdown(new_title, unsafe_allow_html=True)
         optimizer_options1 = ['SDNN', 'RMSSD', "pNN50", "SDSD"]
         selected_optimizer1 = st.selectbox('Time-domain analysis', optimizer_options1)
