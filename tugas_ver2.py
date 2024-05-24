@@ -7,6 +7,7 @@ import math
 import streamlit as st 
 from streamlit_lottie import st_lottie
 import requests
+from st_click_detector import click_detector
 
 ########
 column_names = ['ECG']
@@ -195,6 +196,19 @@ if selected == "Ecyclopedia":
     st.markdown(new_title, unsafe_allow_html=True)
     new_title = '<p style="font-family:Georgia; color:black; font-size: 20px; text-align: Justify;">Jantung Anda berdetak dengan kecepatan tertentu setiap saat. Denyut tersebut berubah tergantung pada apa yang sedang Anda lakukan saat itu. Denyut jantung yang lebih lambat terjadi ketika Anda sedang beristirahat atau santai, dan denyut yang lebih cepat terjadi ketika Anda sedang aktif, stres, atau ketika Anda dalam bahaya. Terdapat variabilitas dalam detak jantung Anda berdasarkan kebutuhan tubuh dan pola pernapasan Anda. Obat-obatan tertentu dan perangkat medis - seperti alat pacu jantung - juga dapat memengaruhi variabilitas detak jantung Anda. Variabilitas detak jantung Anda juga cenderung menurun secara normal seiring bertambahnya usia.</p>'
     st.markdown(new_title, unsafe_allow_html=True)
+    
+     HTML content with YouTube videos embedded
+     content = """
+     <p><a href='#' id='Link 1'>First link</a></p>
+     <p><a href='#' id='Link 2'>Second link</a></p>
+     <iframe id='Video 1' width='560' height='315' src='https://www.youtube.com/embed/dQw4w9WgXcQ' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+     <iframe id='Video 2' width='560' height='315' src='https://www.youtube.com/embed/3JZ_D3ELwOQ' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
+     """
+
+     clicked = click_detector(content)
+
+     st.markdown(f"**{clicked} clicked**" if clicked != "" else "**No click**")
+
 
 if selected == "Data & Graphic":
     st.title('Data & Graphic Input')
