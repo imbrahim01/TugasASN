@@ -208,20 +208,7 @@ if selected == "Ecyclopedia":
 # Display the HTML content
     st.markdown(content, unsafe_allow_html=True)
     st.link_button("Go to video", "https://youtu.be/MUhtAXPvVnE?si=rvYo04B8FCIcPT3I")
- # URL of the video file (replace this with your actual video file link)
-    video_url = "https://youtu.be/MUhtAXPvVnE?si=rvYo04B8FCIcPT3I"
 
-# Get the video content
-    response = requests.get(video_url)
-    video_content = response.content
-
-# Provide a download button for the video
-    st.download_button(
-      label="Download video",
-      data=video_content,
-      file_name="video.mp4",
-      mime="video/mp4"
-  )
  
 
 
