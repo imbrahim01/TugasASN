@@ -197,14 +197,17 @@ if selected == "Ecyclopedia":
     new_title = '<p style="font-family:Georgia; color:black; font-size: 20px; text-align: Justify;">Jantung Anda berdetak dengan kecepatan tertentu setiap saat. Denyut tersebut berubah tergantung pada apa yang sedang Anda lakukan saat itu. Denyut jantung yang lebih lambat terjadi ketika Anda sedang beristirahat atau santai, dan denyut yang lebih cepat terjadi ketika Anda sedang aktif, stres, atau ketika Anda dalam bahaya. Terdapat variabilitas dalam detak jantung Anda berdasarkan kebutuhan tubuh dan pola pernapasan Anda. Obat-obatan tertentu dan perangkat medis - seperti alat pacu jantung - juga dapat memengaruhi variabilitas detak jantung Anda. Variabilitas detak jantung Anda juga cenderung menurun secara normal seiring bertambahnya usia.</p>'
     st.markdown(new_title, unsafe_allow_html=True)
     
-     #HTML content with YouTube videos embedded
+  
+
+# HTML content with the new YouTube video embedded
     content = """
-     
-     
-     <iframe id='Video 1' width='560' height='315' src='https://youtu.be/MUhtAXPvVnE?si=ln3s7GF2mqNwTOMi' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
-     
+
+     <iframe id='Video 1' width='560' height='315' src='https://www.youtube.com/embed/MUhtAXPvVnE' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
      """
+
+# Display the HTML content
     st.markdown(content, unsafe_allow_html=True)
+
 
 
 
