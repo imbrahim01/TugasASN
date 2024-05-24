@@ -208,7 +208,7 @@ if selected == "Ecyclopedia":
 # Display the HTML content
     st.markdown(content, unsafe_allow_html=True)
  # URL of the video file (replace this with your actual video file link)
-    video_url = "https://www.youtube.com/embed/MUhtAXPvVnE"
+    video_url = "https://youtu.be/MUhtAXPvVnE?si=rvYo04B8FCIcPT3I"
 
 # Get the video content
     response = requests.get(video_url)
