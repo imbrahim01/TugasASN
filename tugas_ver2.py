@@ -340,7 +340,7 @@ if selected == "HRV Analysis":
 
     if sub_selected == 'Time Domain Analysis':
         optimizer_options1 = ['SDNN', 'RMSSD', "pNN50", "SDSD"]
-        st.title(Time-domain analysis)
+        st.markdown("<h1 style='text-align: center; color: white;'>Time Domain Analysis", unsafe_allow_html=True)
         selected_optimizer1 = st.selectbox('Time-domain analysis', optimizer_options1)
 
         if selected_optimizer1 == 'SDNN':
