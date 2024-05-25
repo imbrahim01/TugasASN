@@ -157,48 +157,47 @@ for n in range (ptp):
 SDSD = math.sqrt(RR_SDSD/(ptp-2))
 
 bpm_rr = np.zeros(ptp)
-for n in range (ptp):
-  bpm_rr[n] = 60/selisih[n]
-  if bpm_rr [n]>100:
-    bpm_rr[n]=rata
+for n in range(ptp):
+    bpm_rr[n] = 60 / selisih[n]
+    if bpm_rr[n] > 100:
+        bpm_rr[n] = rata
 
- n = np. arange(0,ptp,1,dtype=int)
+# Anda mungkin ingin menggunakan np.arange tanpa spasi
+n = np.arange(0, ptp, 1, dtype=int)
 
+# Ambil subset data dari 0 sampai 49 (bila mungkin)
+n_subset = n[:50]
+bpm_rr_baseline = bpm_rr - 70
+bpm_rr_baseline_subset = bpm_rr_baseline[:50]
 
+M = len(bpm_rr_baseline_subset) - 1
 
-# Ambil subset data dari 0 sampai 49
- n_subset = n[0:50]
- bpm_rr_baseline = bpm_rr - 70
- bpm_rr_baseline_subset = bpm_rr_baseline[0:50]
-
- M = len(bpm_rr_baseline_subset) - 1
-
-
- hamming_window = np.zeros(M+1)
- for i in range(M+1):
+hamming_window = np.zeros(M + 1)
+for i in range(M + 1):
     hamming_window[i] = 0.54 - 0.46 * np.cos(2 * np.pi * i / M)
 
+bpm_rr_baseline_windowed = bpm_rr_baseline_subset * hamming_window
 
- bpm_rr_baseline_windowed = bpm_rr_baseline_subset * hamming_window
- def fourier_transform(signal):
+def fourier_transform(signal):
     N = len(signal)
     fft_result = np.zeros(N, dtype=complex)
     for k in range(N):
         for n in range(N):
             fft_result[k] += signal[n] * np.exp(-2j * np.pi * k * n / N)
-  return fft_result
+    return fft_result
 
-  def calculate_frequency(N, sampling_rate):
+def calculate_frequency(N, sampling_rate):
     return np.arange(N) * sampling_rate / N
- fft_result = fourier_transform(bpm_rr_baseline_windowed)
 
- sampling_rate = 1
+sampling_rate = 1
 
- fft_freq = calculate_frequency(len(bpm_rr_baseline_windowed), sampling_rate)
+fft_result = fourier_transform(bpm_rr_baseline_windowed)
 
- half_point = len(fft_freq) // 2
- fft_freq_half = fft_freq[:half_point]
- fft_result_half = fft_result[:half_point]
+fft_freq = calculate_frequency(len(bpm_rr_baseline_windowed), sampling_rate)
+
+half_point = len(fft_freq) // 2
+fft_freq_half = fft_freq[:half_point]
+fft_result_half = fft_result[:half_point]
 
  # Ambil subset data dari 50 sampai 100
  n_subset1 = n[50:100]
