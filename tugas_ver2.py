@@ -162,61 +162,11 @@ for n in range(ptp):
     bpm_rr[n] = 60 / selisih[n]
     if bpm_rr[n] > 100:
         bpm_rr[n] = rata
-bpm_rr_baseline = bpm_rr - 70
-# Anda mungkin ingin menggunakan np.arange tanpa spasi
+
+
 n = np.arange(0, ptp, 1, dtype=int)
 
-# Ambil subset data dari 0 sampai 49 (bila mungkin)
-n_subset = n[:50]
 
-# Mendefinisikan bpm_rr_baseline sebelum digunakan
-bpm_rr_baseline1 =  bpm_rr - 70
-bpm_rr_baseline_subset = bpm_rr_baseline1[:50]
-
-M = len(bpm_rr_baseline_subset) - 1
-
-hamming_window = np.zeros(M + 1)
-for i in range(M + 1):
-    hamming_window[i] = 0.54 - 0.46 * np.cos(2 * np.pi * i / M)
-
-bpm_rr_baseline_windowed = bpm_rr_baseline_subset * hamming_window
-
-def fourier_transform(signal):
-    N = len(signal)
-    fft_result = np.zeros(N, dtype=complex)
-    for k in range(N):
-        for n in range(N):
-            fft_result[k] += signal[n] * np.exp(-2j * np.pi * k * n / N)
-    return fft_result
-
-def calculate_frequency(N, sampling_rate):
-    return np.arange(N) * sampling_rate / N
-
-sampling_rate = 1
-
-fft_result = fourier_transform(bpm_rr_baseline_windowed)
-
-fft_freq = calculate_frequency(len(bpm_rr_baseline_windowed), sampling_rate)
-
-half_point = len(fft_freq) // 2
-fft_freq_half = fft_freq[:half_point]
-fft_result_half = fft_result[:half_point]
-
-
-
- # Ambil subset data dari 50 sampai 100
- n_subset1 = n[50:100]
- bpm_rr_baseline_subset1 = bpm_rr_baseline[50:100]
-
- bpm_rr_baseline_windowed1 = bpm_rr_baseline_subset1 * hamming_window
-
- fft_result1 = fourier_transform(bpm_rr_baseline_windowed1)
-
- fft_freq1 = calculate_frequency(len(bpm_rr_baseline_windowed1), sampling_rate)
-
- half_point1 = len(fft_freq1) // 2
- fft_freq_half1 = fft_freq1[:half_point1]
- fft_result_half1 = fft_result1[:half_point1]
 
 
 
@@ -433,7 +383,7 @@ if selected == "HRV Analysis":
         st.plotly_chart(fig_histogram)
     elif sub_selected == 'Frequency Domain analysis':
         
-
+        bpm_rr_baseline = bpm_rr - 70
         # Plotting dengan Plotly
         n = np.arange(0, ptp, 1, dtype=int)
         fig = go.Figure(data=go.Scatter(x=n, y=bpm_rr_baseline, mode='lines'))
