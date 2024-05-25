@@ -165,10 +165,11 @@ for n in range (ptp):
  n = np. arange(0,ptp,1,dtype=int)
 
 
-bpm_rr_baseline = bpm_rr - 70
+
 # Ambil subset data dari 0 sampai 49
  n = np.arange(0, ptp, 1, dtype=int)
  n_subset = n[0:50]
+ bpm_rr_baseline = bpm_rr - 70
  bpm_rr_baseline_subset = bpm_rr_baseline[0:50]
 
  M = len(bpm_rr_baseline_subset) - 1
@@ -428,7 +429,7 @@ if selected == "HRV Analysis":
 
         st.plotly_chart(fig_histogram)
     elif sub_selected == 'Frequency Domain analysis':
-        bpm_rr_baseline = bpm_rr - 70
+        
 
         # Plotting dengan Plotly
         n = np.arange(0, ptp, 1, dtype=int)
