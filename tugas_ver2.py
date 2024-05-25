@@ -162,57 +162,57 @@ for n in range (ptp):
   if bpm_rr [n]>100:
     bpm_rr[n]=rata
 
-n = np. arange(0,ptp,1,dtype=int)
+ n = np. arange(0,ptp,1,dtype=int)
 
-def fourier_transform(signal):
+
+
+# Ambil subset data dari 0 sampai 49
+ n = np.arange(0, ptp, 1, dtype=int)
+ n_subset = n[0:50]
+ bpm_rr_baseline_subset = bpm_rr_baseline[0:50]
+
+ M = len(bpm_rr_baseline_subset) - 1
+
+
+ hamming_window = np.zeros(M+1)
+ for i in range(M+1):
+    hamming_window[i] = 0.54 - 0.46 * np.cos(2 * np.pi * i / M)
+
+
+ bpm_rr_baseline_windowed = bpm_rr_baseline_subset * hamming_window
+ def fourier_transform(signal):
     N = len(signal)
     fft_result = np.zeros(N, dtype=complex)
     for k in range(N):
         for n in range(N):
             fft_result[k] += signal[n] * np.exp(-2j * np.pi * k * n / N)
-    return fft_result
+  return fft_result
 
-def calculate_frequency(N, sampling_rate):
+  def calculate_frequency(N, sampling_rate):
     return np.arange(N) * sampling_rate / N
+ fft_result = fourier_transform(bpm_rr_baseline_windowed)
 
-# Ambil subset data dari 0 sampai 49
-n = np.arange(0, ptp, 1, dtype=int)
-n_subset = n[0:50]
-bpm_rr_baseline_subset = bpm_rr_baseline[0:50]
+ sampling_rate = 1
 
-M = len(bpm_rr_baseline_subset) - 1
+ fft_freq = calculate_frequency(len(bpm_rr_baseline_windowed), sampling_rate)
 
+ half_point = len(fft_freq) // 2
+ fft_freq_half = fft_freq[:half_point]
+ fft_result_half = fft_result[:half_point]
 
-hamming_window = np.zeros(M+1)
-for i in range(M+1):
-    hamming_window[i] = 0.54 - 0.46 * np.cos(2 * np.pi * i / M)
+ # Ambil subset data dari 50 sampai 100
+ n_subset1 = n[50:100]
+ bpm_rr_baseline_subset1 = bpm_rr_baseline[50:100]
 
+ bpm_rr_baseline_windowed1 = bpm_rr_baseline_subset1 * hamming_window
 
-bpm_rr_baseline_windowed = bpm_rr_baseline_subset * hamming_window
+ fft_result1 = fourier_transform(bpm_rr_baseline_windowed1)
 
-fft_result = fourier_transform(bpm_rr_baseline_windowed)
+ fft_freq1 = calculate_frequency(len(bpm_rr_baseline_windowed1), sampling_rate)
 
-sampling_rate = 1
-
-fft_freq = calculate_frequency(len(bpm_rr_baseline_windowed), sampling_rate)
-
-half_point = len(fft_freq) // 2
-fft_freq_half = fft_freq[:half_point]
-fft_result_half = fft_result[:half_point]
-
-# Ambil subset data dari 50 sampai 100
-n_subset1 = n[50:100]
-bpm_rr_baseline_subset1 = bpm_rr_baseline[50:100]
-
-bpm_rr_baseline_windowed1 = bpm_rr_baseline_subset1 * hamming_window
-
-fft_result1 = fourier_transform(bpm_rr_baseline_windowed1)
-
-fft_freq1 = calculate_frequency(len(bpm_rr_baseline_windowed1), sampling_rate)
-
-half_point1 = len(fft_freq1) // 2
-fft_freq_half1 = fft_freq1[:half_point1]
-fft_result_half1 = fft_result1[:half_point1]
+ half_point1 = len(fft_freq1) // 2
+ fft_freq_half1 = fft_freq1[:half_point1]
+ fft_result_half1 = fft_result1[:half_point1]
 
 
 
