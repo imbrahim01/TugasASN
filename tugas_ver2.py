@@ -165,8 +165,20 @@ for n in range(ptp):
 
 
 n = np.arange(0, ptp, 1, dtype=int)
-bpm_rr_baseline = bpm_rr - 70
+
+
+
+
+
+
+
+
+
+
+
+
 n_subset = n[0:50]
+bpm_rr_baseline = bpm_rr - 70
 bpm_rr_baseline_subset = bpm_rr_baseline[0:50]
 
 with st.sidebar:
