@@ -155,6 +155,7 @@ RR_SDSD = 0
 for n in range (ptp):
   RR_SDSD += (((abs(selisih[n]-selisih[n+1]))-RRdif)**2)
 SDSD = math.sqrt(RR_SDSD/(ptp-2))
+ptp = len(selisih)
 
 bpm_rr = np.zeros(ptp)
 for n in range(ptp):
@@ -167,6 +168,8 @@ n = np.arange(0, ptp, 1, dtype=int)
 
 # Ambil subset data dari 0 sampai 49 (bila mungkin)
 n_subset = n[:50]
+
+# Mendefinisikan bpm_rr_baseline sebelum digunakan
 bpm_rr_baseline = bpm_rr - 70
 bpm_rr_baseline_subset = bpm_rr_baseline[:50]
 
@@ -198,6 +201,8 @@ fft_freq = calculate_frequency(len(bpm_rr_baseline_windowed), sampling_rate)
 half_point = len(fft_freq) // 2
 fft_freq_half = fft_freq[:half_point]
 fft_result_half = fft_result[:half_point]
+
+
 
  # Ambil subset data dari 50 sampai 100
  n_subset1 = n[50:100]
