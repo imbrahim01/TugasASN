@@ -376,7 +376,7 @@ if selected == "HRV Analysis":
         )
 
         st.plotly_chart(fig_histogram)
-    if sub_selected == 'Frequency Domain analysis':
+    elif sub_selected == 'Frequency Domain analysis':
         bpm_rr_baseline = bpm_rr - 70
 
         # Plotting dengan Plotly
