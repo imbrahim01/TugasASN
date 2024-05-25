@@ -162,7 +162,7 @@ for n in range(ptp):
     bpm_rr[n] = 60 / selisih[n]
     if bpm_rr[n] > 100:
         bpm_rr[n] = rata
-
+bpm_rr_baseline = bpm_rr - 70
 # Anda mungkin ingin menggunakan np.arange tanpa spasi
 n = np.arange(0, ptp, 1, dtype=int)
 
@@ -170,8 +170,8 @@ n = np.arange(0, ptp, 1, dtype=int)
 n_subset = n[:50]
 
 # Mendefinisikan bpm_rr_baseline sebelum digunakan
-bpm_rr_baseline = bpm_rr - 70
-bpm_rr_baseline_subset = bpm_rr_baseline[:50]
+bpm_rr_baseline1 =  bpm_rr - 70
+bpm_rr_baseline_subset = bpm_rr_baseline1[:50]
 
 M = len(bpm_rr_baseline_subset) - 1
 
