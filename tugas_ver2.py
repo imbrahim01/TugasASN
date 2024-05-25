@@ -165,7 +165,7 @@ for n in range (ptp):
  n = np. arange(0,ptp,1,dtype=int)
 
 
-
+bpm_rr_baseline = bpm_rr - 70
 # Ambil subset data dari 0 sampai 49
  n = np.arange(0, ptp, 1, dtype=int)
  n_subset = n[0:50]
