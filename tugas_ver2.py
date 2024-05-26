@@ -6,7 +6,6 @@ from streamlit_option_menu import option_menu
 import math
 import streamlit as st 
 from streamlit_lottie import st_lottie
-import requests
 from st_click_detector import click_detector
 
 ########
