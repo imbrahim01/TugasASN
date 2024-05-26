@@ -7,6 +7,4 @@ streamlit_option_menu
 streamlit_lottie 
 requests
 st_click_detector 
-math
-seaborn
-matplotlib.colors
+
