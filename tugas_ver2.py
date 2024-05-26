@@ -6,7 +6,6 @@ from streamlit_option_menu import option_menu
 import math
 import streamlit as st 
 from streamlit_lottie import st_lottie
-import requests
 
 ########
 column_names = ['ECG']
@@ -193,8 +192,7 @@ if selected == "Ecyclopedia":
     st.markdown(new_title, unsafe_allow_html=True)
     new_title = '<p style="font-family:Georgia; color:blue; font-size: 23px; text-align: left;">2. Bagaimana cara kerja HRV?</p>'
     st.markdown(new_title, unsafe_allow_html=True)
-    new_title = '<p style="font-family:Georgia; color:black; font-size: 20px; text-align: Justify;">Jantung Anda berdetak dengan kecepatan tertentu setiap saat. Denyut tersebut berubah tergantung pada apa yang sedang Anda lakukan saat itu. Denyut jantung yang lebih lambat terjadi ketika Anda sedang beristirahat atau santai, dan denyut yang lebih cepat terjadi ketika Anda sedang aktif, stres, atau ketika Anda dalam bahaya. Terdapat variabilitas dalam detak jantung Anda berdasarkan kebutuhan tubuh dan pola pernapasan Anda. Obat-obatan tertentu dan perangkat medis - seperti alat pacu jantung - juga dapat memengaruhi variabilitas detak jantung Anda. Variabilitas detak jantung Anda juga cenderung menurun secara normal seiring bertambahnya usia.</p>'
-    st.markdown(new_title, unsafe_allow_html=True)
+   
 
 if selected == "Data & Graphic":
     st.title('Data & Graphic Input')
