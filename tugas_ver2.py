@@ -102,7 +102,10 @@ for n in range(np.size(thrqrs) - 1):
         waktu[ptp] = n / fs;
         selisih[ptp] = waktu[ptp] - waktu[ptp - 1]
         ptp += 1
+
 ptp = ptp - 1
+
+
 
 #CALCULATION OF THE AMOUNT OF R
 j = 0
