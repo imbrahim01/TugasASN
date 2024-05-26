@@ -167,20 +167,6 @@ for n in range(ptp):
 n = np.arange(0, ptp, 1, dtype=int)
 
 
-
-
-
-
-
-
-
-
-
-
-n_subset = n[0:50]
-bpm_rr_baseline = bpm_rr - 70
-bpm_rr_baseline_subset = bpm_rr_baseline[0:50]
-
 with st.sidebar:
     selected = option_menu("TUGAS 1", ["Home","Ecyclopedia", "Data & Graphic", "Filter","Method","HRV Analysis"], icons=['house', 'book',None,None,None,None], menu_icon="cast", default_index=1)
 
