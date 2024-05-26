@@ -8,5 +8,5 @@ streamlit_lottie
 requests
 st_click_detector 
 math
-seaborn as sns
+seaborn
 matplotlib.colors
