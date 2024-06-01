@@ -1129,8 +1129,8 @@ if selected == "DWT":
         index=0
     )
         if sub_selected1 == 'Filter Coef':
-            optimizer_options4 = ['Penurunan inverse fourier transform ', 'h(n)', 'g(n)', 'Hw', 'Gw']
-            selected_optimizer4 = st.selectbox('', optimizer_options4)
+            optimizer_options4 = [' ', 'h(n)', 'g(n)', 'Hw', 'Gw','Qj(f)']
+            selected_optimizer4 = st.selectbox('Penurunan inverse fourier transform', optimizer_options4)
             if selected_optimizer4 == 'h(n)':
                 fig = go.Figure(data=[go.Bar(x=n_list, y=h)])
                 fig.update_layout(title='h(n) Plot', xaxis_title='n', yaxis_title='g(n)',template='plotly_dark')
@@ -1146,6 +1146,23 @@ if selected == "DWT":
             if selected_optimizer4 == 'Gw':
                 fig = go.Figure(data=go.Scatter(x=i_list, y=Gw[:len(i_list)]))
                 fig.update_layout(title='Gw Plot', xaxis_title='i', yaxis_title='Gw',template='plotly_dark')
+                st.plotly_chart(fig)
+            if selected_optimizer4 == 'Qj(f)':
+              for i in range(1, 9):
+                trace = go.Scatter(x=i_list, y=Q[i], mode='lines', name=f'Q[{i}]')
+                traces.append(trace)
+                
+                
+                layout = go.Layout(title='Qj (f)',
+                                   xaxis=dict(title=''),
+                                   yaxis=dict(title=''),
+                                   template='plotly_dark'
+                )
+                
+                
+                fig = go.Figure(data=traces, layout=layout)
+                
+                
                 st.plotly_chart(fig)
         if sub_selected1 == 'Mallat':
             optimizer_options5 = ['', 'Delay', 'w2fm','s2fm','gabungan']
