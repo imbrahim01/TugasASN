@@ -1150,7 +1150,7 @@ if selected == "DWT":
                 st.plotly_chart(fig)
             if selected_optimizer4 == 'Qj(f)':
                 traces = []
-              for i in range(1, 9):
+                for i in range(1, 9):
                 trace = go.Scatter(x=i_list, y=Q[i], mode='lines', name=f'Q[{i}]')
                 traces.append(trace)
                 
