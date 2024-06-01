@@ -1244,6 +1244,18 @@ if selected == "DWT":
                 # Create and show separate plots for each w2fm series
                 for i in range(5):
                     create_plot(n_values, s2fm_values[i], i, 's2fm')
+            if selected_optimizer5 == 'Mallat (gabungan)':
+                n_values = np.arange(min_n, max_n + 1)
+                for i in range(0, 5):
+                    fig = go.Figure()
+                    fig.add_trace(go.Scatter(x=n_values, y=w2fm[i], mode='lines', name=f'w2fm {i+1}'))
+                    fig.add_trace(go.Scatter(x=n_values, y=s2fm[i], mode='lines', name=f's2fm {i+1}'))
+                    fig.update_layout(
+                        title=f'w2fm and s2fm ({i+1})f',
+                        template='plotly_dark'
+                    )
+                    fig.show()
+
 
 
 
