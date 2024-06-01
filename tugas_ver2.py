@@ -1148,7 +1148,7 @@ if selected == "DWT":
                 fig.update_layout(title='Gw Plot', xaxis_title='i', yaxis_title='Gw',template='plotly_dark')
                 st.plotly_chart(fig)
         if sub_selected1 == 'Mallat':
-            optimizer_options5 = ['', 'Delay', 'Mallat (w2fm)','Mallat (s2fm)']
+            optimizer_options5 = ['', 'Delay', 'w2fm','s2fm','gabungan']
             selected_optimizer5 = st.selectbox('', optimizer_options5)
             if selected_optimizer5 == 'Delay':
                 data = {
@@ -1217,7 +1217,7 @@ if selected == "DWT":
                 # Tampilkan tabel
                 st.plotly_chart(fig)
             
-            if selected_optimizer5 == 'Mallat (w2fm)':
+            if selected_optimizer5 == 'w2fm':
                 # Function to create and display a plot for a given series
                 def create_plot(n_values, series, index, series_name):
                     fig = go.Figure()
@@ -1231,7 +1231,7 @@ if selected == "DWT":
                 for i in range(5):
                     create_plot(n_values, w2fm_values[i], i, 'w2fm')
                     
-            if selected_optimizer5 == 'Mallat (s2fm)':
+            if selected_optimizer5 == 's2fm':
                 # Function to create and display a plot for a given series
                 def create_plot(n_values, series, index, series_name):
                     fig = go.Figure()
@@ -1244,7 +1244,7 @@ if selected == "DWT":
                 # Create and show separate plots for each w2fm series
                 for i in range(5):
                     create_plot(n_values, s2fm_values[i], i, 's2fm')
-            if selected_optimizer5 == 'Mallat (gabungan)':
+            if selected_optimizer5 == 'gabungan':
                 n_values = np.arange(min_n, max_n + 1)
                 for i in range(0, 5):
                     fig = go.Figure()
@@ -1254,7 +1254,7 @@ if selected == "DWT":
                         title=f'w2fm and s2fm ({i+1})f',
                         template='plotly_dark'
                     )
-                    fig.show()
+                    st.plotly_chart(fig)
 
 
 
