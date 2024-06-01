@@ -1145,7 +1145,7 @@ if selected == "DWT":
                 st.plotly_chart(fig)
             if selected_optimizer4 == 'Gw':
                 fig = go.Figure(data=go.Scatter(x=i_list, y=Gw[:len(i_list)]))
-                fig.update_layout(title='Hw Plot', xaxis_title='i', yaxis_title='Gw',template='plotly_dark')
+                fig.update_layout(title='Gw Plot', xaxis_title='i', yaxis_title='Gw',template='plotly_dark')
                 st.plotly_chart(fig)
         if sub_selected1 == 'Mallat':
                 data = {
