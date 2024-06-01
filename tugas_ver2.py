@@ -307,6 +307,54 @@ LF_norm = LF / (total_power - VLF)
 HF_norm = HF / (total_power - VLF)
 LF_HF = LF / HF
 
+            def determine_category(LF_norm, HF_norm, LF_HF):
+                if LF_norm < 0.2 and HF_norm < 0.2:
+                    return 1  # Low - Low
+                elif LF_norm >= 0.2 and LF_norm <= 0.6 and HF_norm < 0.2:
+                    return 2  # Normal - Low
+                elif LF_norm > 0.6 and HF_norm < 0.2:
+                    return 3  # High - Low
+                elif LF_norm < 0.2 and HF_norm >= 0.2 and HF_norm <= 0.6:
+                    return 4  # Low - Normal
+                elif LF_norm >= 0.2 and LF_norm <= 0.6 and HF_norm >= 0.2 and HF_norm <= 0.6:
+                    return 5  # Normal - Normal
+                elif LF_norm > 0.6 and HF_norm >= 0.2 and HF_norm <= 0.6:
+                    return 6  # High - Normal
+                elif LF_norm < 0.2 and HF_norm > 0.6:
+                    return 7  # Low - High
+                elif LF_norm >= 0.2 and LF_norm <= 0.6 and HF_norm > 0.6:
+                    return 8  # Normal - High
+                elif LF_norm > 0.6 and HF_norm > 0.6:
+                    return 9  # High - High
+                else:
+                    return 0  # Undefined
+    
+    
+            st.title("Autonomic Balance Diagram")
+    
+            category = determine_category(LF_norm, HF_norm, LF_HF)
+            st.write("Category:", category)
+    
+    
+            data = [
+                [7, 8, 9],
+                [4, 5, 6],
+                [1, 2, 3]
+             ]
+    
+            coordinates = {
+                1: (2, 0),
+                2: (2, 1),
+                3: (2, 2),
+                4: (1, 0),
+                5: (1, 1),
+                6: (1, 2),
+                7: (0, 0),
+                8: (0, 1),
+                9: (0, 2)
+              }
+    
+
 
 
   
@@ -937,53 +985,6 @@ if selected == "HRV Analysis":
             yaxis_title='Nilai'
             )
             st.plotly_chart(fig)
-    
-            def determine_category(LF_norm, HF_norm, LF_HF):
-                if LF_norm < 0.2 and HF_norm < 0.2:
-                    return 1  # Low - Low
-                elif LF_norm >= 0.2 and LF_norm <= 0.6 and HF_norm < 0.2:
-                    return 2  # Normal - Low
-                elif LF_norm > 0.6 and HF_norm < 0.2:
-                    return 3  # High - Low
-                elif LF_norm < 0.2 and HF_norm >= 0.2 and HF_norm <= 0.6:
-                    return 4  # Low - Normal
-                elif LF_norm >= 0.2 and LF_norm <= 0.6 and HF_norm >= 0.2 and HF_norm <= 0.6:
-                    return 5  # Normal - Normal
-                elif LF_norm > 0.6 and HF_norm >= 0.2 and HF_norm <= 0.6:
-                    return 6  # High - Normal
-                elif LF_norm < 0.2 and HF_norm > 0.6:
-                    return 7  # Low - High
-                elif LF_norm >= 0.2 and LF_norm <= 0.6 and HF_norm > 0.6:
-                    return 8  # Normal - High
-                elif LF_norm > 0.6 and HF_norm > 0.6:
-                    return 9  # High - High
-                else:
-                    return 0  # Undefined
-    
-    
-            st.title("Autonomic Balance Diagram")
-    
-            category = determine_category(LF_norm, HF_norm, LF_HF)
-            st.write("Category:", category)
-    
-    
-            data = [
-                [7, 8, 9],
-                [4, 5, 6],
-                [1, 2, 3]
-             ]
-    
-            coordinates = {
-                1: (2, 0),
-                2: (2, 1),
-                3: (2, 2),
-                4: (1, 0),
-                5: (1, 1),
-                6: (1, 2),
-                7: (0, 0),
-                8: (0, 1),
-                9: (0, 2)
-              }
     
     
     # Create heatmap with Plotly Express
