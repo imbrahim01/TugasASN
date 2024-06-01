@@ -1129,7 +1129,7 @@ if selected == "DWT":
         index=0
     )
         if sub_selected1 == 'Filter Coef':
-            optimizer_options4 = ['', 'h(n)', 'g(n)', 'Hw', 'Gw']
+            optimizer_options4 = ['Penurunan inverse fourier transform ', 'h(n)', 'g(n)', 'Hw', 'Gw']
             selected_optimizer4 = st.selectbox('', optimizer_options4)
             if selected_optimizer4 == 'h(n)':
                 fig = go.Figure(data=[go.Bar(x=n_list, y=h)])
@@ -1148,6 +1148,9 @@ if selected == "DWT":
                 fig.update_layout(title='Gw Plot', xaxis_title='i', yaxis_title='Gw',template='plotly_dark')
                 st.plotly_chart(fig)
         if sub_selected1 == 'Mallat':
+            optimizer_options5 = ['', 'Delay', 'Mallat']
+            selected_optimizer5 = st.selectbox('', optimizer_options5)
+            if selected_optimizer5 == 'Delay':
                 data = {
                     "": ["T1", "T2", "T3","T4","T5"],
                     "Hasil": [T1, T2, T3,T4,T5]
@@ -1214,7 +1217,22 @@ if selected == "DWT":
                 # Tampilkan tabel
                 st.plotly_chart(fig)
             
-                            
+            if selected_optimizer5 == 'Mallat':
+                # Function to create and display a plot for a given series
+                def create_plot(n_values, series, index, series_name):
+                    fig = go.Figure()
+                    fig.add_trace(go.Scatter(x=n_values, y=series, mode='lines', name=f'{series_name}[{index+1},n]'))
+                    fig.update_layout(
+                        title=f'{series_name}[{index+1},n] vs n',
+                        xaxis_title='n',
+                        yaxis_title=f'{series_name}[{index+1},n]',
+                        template='plotly_dark'
+                    )
+                    st.plotly_chart(fig)
+                
+                # Create and show separate plots for each w2fm series
+                for i in range(5):
+                    create_plot(n_values, w2fm_values[i], i, 'w2fm')
 
 
 
