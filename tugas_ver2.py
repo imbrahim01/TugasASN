@@ -1148,7 +1148,7 @@ if selected == "DWT":
                 fig.update_layout(title='Gw Plot', xaxis_title='i', yaxis_title='Gw',template='plotly_dark')
                 st.plotly_chart(fig)
         if sub_selected1 == 'Mallat':
-            optimizer_options5 = ['', 'Delay', 'Mallat']
+            optimizer_options5 = ['', 'Delay', 'Mallat (w2fm)','Mallat (s2fm)']
             selected_optimizer5 = st.selectbox('', optimizer_options5)
             if selected_optimizer5 == 'Delay':
                 data = {
@@ -1217,13 +1217,13 @@ if selected == "DWT":
                 # Tampilkan tabel
                 st.plotly_chart(fig)
             
-            if selected_optimizer5 == 'Mallat':
+            if selected_optimizer5 == 'Mallat (w2fm)':
                 # Function to create and display a plot for a given series
                 def create_plot(n_values, series, index, series_name):
                     fig = go.Figure()
                     fig.add_trace(go.Scatter(x=n_values, y=series, mode='lines', name=f'{series_name}[{index+1},n]'))
                     fig.update_layout(
-                        title=f'{series_name}[{index+1},n] vs n',
+                        title=f'{series_name}[{index+1}f]',
                         xaxis_title='n',
                         yaxis_title=f'{series_name}[{index+1},n]',
                         template='plotly_dark'
@@ -1233,6 +1233,23 @@ if selected == "DWT":
                 # Create and show separate plots for each w2fm series
                 for i in range(5):
                     create_plot(n_values, w2fm_values[i], i, 'w2fm')
+                    
+            if selected_optimizer5 == 'Mallat (s2fm)':
+                # Function to create and display a plot for a given series
+                def create_plot(n_values, series, index, series_name):
+                    fig = go.Figure()
+                    fig.add_trace(go.Scatter(x=n_values, y=series, mode='lines', name=f'{series_name}[{index+1},n]'))
+                    fig.update_layout(
+                        title=f'{series_name}[{index+1}f]',
+                        xaxis_title='n',
+                        yaxis_title=f'{series_name}[{index+1},n]',
+                        template='plotly_dark'
+                    )
+                    st.plotly_chart(fig)
+                
+                # Create and show separate plots for each w2fm series
+                for i in range(5):
+                    create_plot(n_values, s2fm_values[i], i, 's2fm')
 
 
 
