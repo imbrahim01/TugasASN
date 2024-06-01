@@ -353,7 +353,6 @@ for i in range (0,fs+1):
     Gw[i] = temp_Gw
     
 i_list = i_list[0:round(fs/2)+1]
-
 Q = np.zeros((9, round(fs/2) + 1))
 
 # Generate the i_list and fill Q with the desired values
@@ -371,15 +370,47 @@ for i in range(0, round(fs/2) + 1):
 
 traces = []
 
+T1= round (2**(1-1))-1
+T2 = round(2** (2-1)) - 1
+T3 = round(2** (3-1)) - 1
+T4 = round(2**(4-1)) - 1
+T5 = round(2**(5-1))- 1
+Delay1= T5-T1
+Delay2= T5-T2
+Delay3= T5-T3
+Delay4= T5-T4
+Delay5= T5-T5
+
+ecg=y
+
+min_n = 1 * fs
+max_n = 3 * fs 
 
 
+def process_ecg(min_n, max_n, ecg, g, h):
+    w2fm = np.zeros((5, max_n - min_n + 1))
+    s2fm = np.zeros((5, max_n - min_n + 1))
 
+    for n in range(min_n, max_n + 1):
+        for j in range(1, 6):
+            w2fm[j-1, n - min_n] = 0
+            s2fm[j-1, n - min_n] = 0
+            for k in range(-1, 3):
+                index = round(n - 2**(j-1) * k)
+                if 0 <= index < len(ecg):  # Ensure the index is within bounds
+                    w2fm[j-1, n - min_n] += g[k+1] * ecg[index]  # g[k+1] to match Pascal's array index starting from -1
+                    s2fm[j-1, n - min_n] += h[k+1] * ecg[index]  # h[k+1] to match Pascal's array index starting from -1
 
-    
+    return w2fm, s2fm
 
+# Compute w2fm and s2fm
+w2fm, s2fm = process_ecg(min_n, max_n, ecg, g, h)
 
+# Prepare data for plotting
+n_values = np.arange(min_n, max_n + 1)
+w2fm_values = [w2fm[i, :] for i in range(5)]  # Equivalent to w2fm[1,n] to w2fm[5,n] in original code (0-based index)
+s2fm_values = [s2fm[i, :] for i in range(5)]  
 
-  
 
 
 
@@ -1093,13 +1124,13 @@ if selected == "HRV Analysis":
     
 if selected == "DWT":
         sub_selected1 = st.sidebar.radio(
-        "Pilih Metode DWT",
+        "",
         ["Filter Coef", "Mallat", "Filter Bank "],
         index=0
     )
         if sub_selected1 == 'Filter Coef':
             optimizer_options4 = ['', 'h(n)', 'g(n)', 'Hw', 'Gw']
-            selected_optimizer4 = st.selectbox('Segmentation', optimizer_options4)
+            selected_optimizer4 = st.selectbox('', optimizer_options4)
             if selected_optimizer4 == 'h(n)':
                 fig = go.Figure(data=[go.Bar(x=n_list, y=h)])
                 fig.update_layout(title='h(n) Plot', xaxis_title='n', yaxis_title='g(n)',template='plotly_dark')
@@ -1116,6 +1147,73 @@ if selected == "DWT":
                 fig = go.Figure(data=go.Scatter(x=i_list, y=Gw[:len(i_list)]))
                 fig.update_layout(title='Hw Plot', xaxis_title='i', yaxis_title='Gw',template='plotly_dark')
                 st.plotly_chart(fig)
+        if sub_selected1 == 'Mallat':
+                data = {
+                    "": ["T1", "T2", "T3","T4","T5"],
+                    "Hasil": [T1, T2, T3,T4,T5]
+                }
+                df = pd.DataFrame(data)
+                
+                # Buat tabel menggunakan Plotly
+                fig = go.Figure(data=[go.Table(
+                    columnwidth=[80, 20],  # Set column width
+                    header=dict(values=list(df.columns),
+                                fill_color='red',  # Ubah warna header menjadi merah
+                                align='left',
+                                line_color='darkslategray',
+                                height=30),  # Set header height
+                    cells=dict(values=[df[""], df["Hasil"]],
+                               fill_color='white',  # Ubah warna sel menjadi merah
+                               align='left',
+                               line_color='darkslategray',
+                               height=25,  # Set cell height
+                               font_size=12,  # Set font size
+                               ),
+                )])
+                
+                # Set layout to adjust the table size
+                fig.update_layout(
+                    width=800,
+                    height=200,
+                    margin=dict(l=10, r=10, t=10, b=10)
+                )
+                
+                # Tampilkan tabel
+                st.plotly_chart(fig)
+                
+                data = {
+                    "": ["Delay1","Delay2","Delay3","Delay4","Delay5"],
+                    "Hasil": [Delay1,Delay2,Delay3,Delay4,Delay5]
+                }
+                df = pd.DataFrame(data)
+                
+                # Buat tabel menggunakan Plotly
+                fig = go.Figure(data=[go.Table(
+                    columnwidth=[80, 20],  # Set column width
+                    header=dict(values=list(df.columns),
+                                fill_color='red',  # Ubah warna header menjadi merah
+                                align='left',
+                                line_color='darkslategray',
+                                height=30),  # Set header height
+                    cells=dict(values=[df[""], df["Hasil"]],
+                               fill_color='white',  # Ubah warna sel menjadi merah
+                               align='left',
+                               line_color='darkslategray',
+                               height=25,  # Set cell height
+                               font_size=12,  # Set font size
+                               ),
+                )])
+                
+                # Set layout to adjust the table size
+                fig.update_layout(
+                    width=800,
+                    height=200,
+                    margin=dict(l=10, r=10, t=10, b=10)
+                )
+                
+                # Tampilkan tabel
+                st.plotly_chart(fig)
+            
                             
 
 
