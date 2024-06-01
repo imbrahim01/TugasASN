@@ -1223,7 +1223,7 @@ if selected == "DWT":
                     fig = go.Figure()
                     fig.add_trace(go.Scatter(x=n_values, y=series, mode='lines', name=f'{series_name}[{index+1},n]'))
                     fig.update_layout(
-                        title=f'{series_name}[{index+1}f]',
+                        title=f'{series_name}({index+1})f',
                         xaxis_title='n',
                         yaxis_title=f'{series_name}[{index+1},n]',
                         template='plotly_dark'
@@ -1240,7 +1240,7 @@ if selected == "DWT":
                     fig = go.Figure()
                     fig.add_trace(go.Scatter(x=n_values, y=series, mode='lines', name=f'{series_name}[{index+1},n]'))
                     fig.update_layout(
-                        title=f'{series_name}[{index+1}f]',
+                        title=f'{series_name}({index+1})f',
                         xaxis_title='n',
                         yaxis_title=f'{series_name}[{index+1},n]',
                         template='plotly_dark'
