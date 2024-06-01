@@ -8,7 +8,7 @@ import streamlit as st
 from streamlit_lottie import st_lottie
 from st_click_detector import click_detector
 import plotly.express as px
-import pyhrv.nonlinear as nl
+
 
 ########
 column_names = ['ECG']
