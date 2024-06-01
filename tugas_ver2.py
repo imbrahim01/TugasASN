@@ -307,6 +307,73 @@ LF_norm = LF / (total_power - VLF)
 HF_norm = HF / (total_power - VLF)
 LF_HF = LF / HF
 
+def dirac(x): 
+    if (x == 0) :
+        dirac_delta = 1
+    else:
+        dirac_delta = 0
+    
+    return dirac_delta
+    return result
+
+
+h = []
+g = []
+n_list = []
+
+for n in range(-2, 2):
+    n_list.append(n)
+    temp_h = 1/8 * (dirac(n-1) + 3*dirac(n) + 3*dirac(n+1) + dirac(n+2))
+    h.append(temp_h)
+    temp_g = -2 * (dirac(n) - dirac(n+1))
+    g.append(temp_g)
+
+# Hw = []
+# Gw = []
+
+Hw = np.zeros(20000)
+Gw = np.zeros(20000)
+i_list = []
+for i in range (0,fs+1):
+    i_list.append(i)
+    reG = 0
+    imG = 0
+    reH = 0
+    imH = 0
+    for k in range(-2,2):
+      reG = reG + g[k+abs(-2)]*np.cos(k*2*np.pi*i/fs)
+      imG = imG - g[k+abs(-2)]*np.sin(k*2*np.pi*i/fs)
+      reH = reH + h[k+abs(-2)]*np.cos(k*2*np.pi*i/fs)
+      imH = imH - h[k+abs(-2)]*np.sin(k*2*np.pi*i/fs)
+    temp_Hw = np.sqrt((reH**2)+(imH**2))
+    temp_Gw = np.sqrt((reG**2)+(imG**2))
+
+
+    Hw[i] = temp_Hw
+    Gw[i] = temp_Gw
+    
+i_list = i_list[0:round(fs/2)+1]
+
+Q = np.zeros((9, round(fs/2) + 1))
+
+# Generate the i_list and fill Q with the desired values
+i_list = []
+for i in range(0, round(fs/2) + 1):
+    i_list.append(i)
+    Q[1][i] = Gw[i]
+    Q[2][i] = Gw[2*i] * Hw[i]
+    Q[3][i] = Gw[4*i] * Hw[2*i] * Hw[i]
+    Q[4][i] = Gw[8*i] * Hw[4*i] * Hw[2*i] * Hw[i]
+    Q[5][i] = Gw[16*i] * Hw[8*i] * Hw[4*i] * Hw[2*i] * Hw[i]
+    Q[6][i] = Gw[32*i] * Hw[16*i] * Hw[8*i] * Hw[4*i] * Hw[2*i] * Hw[i]
+    Q[7][i] = Gw[64*i] * Hw[32*i] * Hw[16*i] * Hw[8*i] * Hw[4*i] * Hw[2*i] * Hw[i]
+    Q[8][i] = Gw[128*i] * Hw[64*i] * Hw[32*i] * Hw[16*i] * Hw[8*i] * Hw[4*i] * Hw[2*i] * Hw[i]
+
+traces = []
+
+
+
+
 
     
 
@@ -1030,6 +1097,26 @@ if selected == "DWT":
         ["Filter Coef", "Mallat", "Filter Bank "],
         index=0
     )
+        if sub_selected1 == 'Filter Coef':
+            optimizer_options4 = ['', 'h(n)', 'g(n)', 'Hw', 'Gw']
+            selected_optimizer4 = st.selectbox('Segmentation', optimizer_options4)
+            if selected_optimizer4 == 'h(n)':
+                fig = go.Figure(data=[go.Bar(x=n_list, y=h)])
+                fig.update_layout(title='h(n) Plot', xaxis_title='n', yaxis_title='g(n)',template='plotly_dark')
+                st.plotly_chart(fig)
+            if selected_optimizer4 == 'g(n)':
+                fig = go.Figure(data=[go.Bar(x=n_list, y=g)])
+                fig.update_layout(title='g(n) Plot', xaxis_title='n', yaxis_title='g(n)',template='plotly_dark')
+                st.plotly_chart(fig)
+            if selected_optimizer4 == 'Hw':
+                fig = go.Figure(data=go.Scatter(x=i_list, y=Hw[:len(i_list)]))
+                fig.update_layout(title='Hw Plot', xaxis_title='i', yaxis_title='Gw',template='plotly_dark')
+                st.plotly_chart(fig)
+            if selected_optimizer4 == 'Gw':
+                fig = go.Figure(data=go.Scatter(x=i_list, y=Gw[:len(i_list)]))
+                fig.update_layout(title='Hw Plot', xaxis_title='i', yaxis_title='Gw',template='plotly_dark')
+                st.plotly_chart(fig)
+                            
 
 
 
