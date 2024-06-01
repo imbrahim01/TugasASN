@@ -1151,21 +1151,21 @@ if selected == "DWT":
             if selected_optimizer4 == 'Qj(f)':
                 traces = []
                 for i in range(1, 9):
-                trace = go.Scatter(x=i_list, y=Q[i], mode='lines', name=f'Q[{i}]')
-                traces.append(trace)
+                 trace = go.Scatter(x=i_list, y=Q[i], mode='lines', name=f'Q[{i}]')
+                 traces.append(trace)
                 
                 
-                layout = go.Layout(title='Qj (f)',
+                 layout = go.Layout(title='Qj (f)',
                                    xaxis=dict(title=''),
                                    yaxis=dict(title=''),
                                    template='plotly_dark'
                 )
                 
                 
-                fig = go.Figure(data=traces, layout=layout)
+                 fig = go.Figure(data=traces, layout=layout)
                 
                 
-                st.plotly_chart(fig)
+                 st.plotly_chart(fig)
         if sub_selected1 == 'Mallat':
             optimizer_options5 = ['', 'Delay', 'w2fm','s2fm','gabungan']
             selected_optimizer5 = st.selectbox('', optimizer_options5)
