@@ -353,6 +353,7 @@ for i in range (0,fs+1):
     Gw[i] = temp_Gw
     
 i_list = i_list[0:round(fs/2)+1]
+
 Q = np.zeros((9, round(fs/2) + 1))
 
 # Generate the i_list and fill Q with the desired values
@@ -1148,6 +1149,7 @@ if selected == "DWT":
                 fig.update_layout(title='Gw Plot', xaxis_title='i', yaxis_title='Gw',template='plotly_dark')
                 st.plotly_chart(fig)
             if selected_optimizer4 == 'Qj(f)':
+                traces = []
               for i in range(1, 9):
                 trace = go.Scatter(x=i_list, y=Q[i], mode='lines', name=f'Q[{i}]')
                 traces.append(trace)
