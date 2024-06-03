@@ -384,8 +384,8 @@ Delay5= T5-T5
 
 ecg=y
 
-min_n = 1 * fs
-max_n = 3 * fs 
+min_n = 0 * fs
+max_n = 4 * fs 
 
 
 def process_ecg(min_n, max_n, ecg, g, h):
