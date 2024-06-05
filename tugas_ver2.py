@@ -657,30 +657,7 @@ if selected == "HRV Analysis":
         
             st.plotly_chart(fig)
 
-            fig_Tachogram = go.Figure(data=go.Scatter(x=n, y=bpm_rr, mode='lines'))
-            fig_Tachogram.update_layout(
-              title="TACHOGRAM",
-              xaxis_title="n",
-              yaxis_title="BPM",
-              xaxis=dict(showline=True, showgrid=True),
-              yaxis=dict(showline=True, showgrid=True),
-              template='plotly_dark'
-              )
-            st.plotly_chart(fig_Tachogram)
 
-            fig_histogram = go.Figure(data=go.Histogram(x=bpm_rr, nbinsx=ptp))
-
-            fig_histogram.update_layout(
-              title="Histogram Interval RR",
-              xaxis_title="Interval RR",
-              yaxis_title="Banyak Data",
-              xaxis=dict(showline=True, showgrid=True),
-              yaxis=dict(showline=True, showgrid=True),
-              bargap=0.2, 
-              bargroupgap=0.1, 
-              template='plotly_dark'
-              )
-            st.plotly_chart(fig_histogram)
         if selected2 == "Information":
             new_title = '<p style="font-family:Georgia; color:blue; font-size: 23px; text-align: left;">SDNN</p>'
             st.markdown(new_title, unsafe_allow_html=True)
