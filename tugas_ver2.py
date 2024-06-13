@@ -307,21 +307,6 @@ LF_norm = LF / (total_power - VLF)
 HF_norm = HF / (total_power - VLF)
 LF_HF = LF / HF
 
-temp=0
-interval=np.zeros(np.size(thrqrs))
-BPM=np.zeros(np.size(thrqrs))
-
-# Calculate intervals and BPM
-for n in range(1, ptp):
-    interval[n] = (peak[n] - peak[n-1]) * (1/fs)
-    BPM[n] = 60 / interval[n]
-    temp += BPM[n]
-    rata = temp / n  # Modified to avoid division by zero
-
-# Define the Poincaré plot function
-def create_poincare_plot(interval):
-    x = interval[:-1]
-    y = interval[1:]
 
 
 
@@ -1117,16 +1102,7 @@ if selected == "HRV Analysis":
     
     # Display heatmap in Streamlit
             st.plotly_chart(fig)
-    elif sub_selected == 'Non Liniear analysis':
-            plt.figure(figsize=(6, 6))
-            plt.scatter(x, y, s=5, c='blue', alpha=0.5)
-            plt.title('Poincaré Plot of RR Intervals')
-            plt.xlabel('RR(n)')
-            plt.ylabel('RR(n+1)')
-            plt.grid(True)
-            st.pyplot(plt)
 
-            create_poincare_plot(interval)
 
 if selected == "DWT":
         sub_selected1 = st.sidebar.radio(
