@@ -699,7 +699,7 @@ if selected == "HRV Analysis":
         elif selected3 == 'Segmentation':
              optimizer_options3 = ['', 'Data 0-50', 'Data 50-100', 'Data 101-151', 'Data 151-201','Data 201-251','Data 251-301','Data 301-351','FFT TOTAL']
              selected_optimizer3 = st.selectbox('Segmentation', optimizer_options3)
-            if selected_optimizer3 == 'Data 0-50':
+             if selected_optimizer3 == 'Data 0-50':
                 fig = go.Figure(data=go.Scatter(x=n_subset, y=bpm_rr_baseline_subset, mode='lines'))
                 fig.update_layout(
                 title="TACHOGRAM (Data 0-49)",
@@ -730,7 +730,7 @@ if selected == "HRV Analysis":
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 50-100':
+             if selected_optimizer3 == 'Data 50-100':
                 # Plotting dengan Plotly untuk subset data 50:100
                 fig = go.Figure(data=go.Scatter(x=n_subset1, y=bpm_rr_baseline_subset1, mode='lines'))
                 fig.update_layout(
@@ -762,7 +762,7 @@ if selected == "HRV Analysis":
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 101-151':
+             if selected_optimizer3 == 'Data 101-151':
         
                 # Plotting dengan Plotly untuk subset data 101:151
                 fig = go.Figure(data=go.Scatter(x=n_subset2, y=bpm_rr_baseline_subset2, mode='lines'))
@@ -796,7 +796,7 @@ if selected == "HRV Analysis":
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 151-201':
+             if selected_optimizer3 == 'Data 151-201':
                 # Plotting dengan Plotly untuk subset data 151:201
                 fig = go.Figure(data=go.Scatter(x=n_subset3, y=bpm_rr_baseline_subset3, mode='lines'))
                 fig.update_layout(
@@ -829,7 +829,7 @@ if selected == "HRV Analysis":
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 201-251':
+             if selected_optimizer3 == 'Data 201-251':
         
                 # Plotting dengan Plotly untuk subset data 201:251
                 fig = go.Figure(data=go.Scatter(x=n_subset4, y=bpm_rr_baseline_subset4, mode='lines'))
@@ -863,7 +863,7 @@ if selected == "HRV Analysis":
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 251-301':
+             if selected_optimizer3 == 'Data 251-301':
 
                 # Plotting dengan Plotly untuk subset data 251:301
                 fig = go.Figure(data=go.Scatter(x=n_subset5, y=bpm_rr_baseline_subset5, mode='lines'))
@@ -897,7 +897,7 @@ if selected == "HRV Analysis":
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 301-351':
+             if selected_optimizer3 == 'Data 301-351':
                 # Plotting dengan Plotly untuk subset data 301:351
                 fig = go.Figure(data=go.Scatter(x=n_subset6, y=bpm_rr_baseline_subset6, mode='lines'))
                 fig.update_layout(
@@ -930,7 +930,7 @@ if selected == "HRV Analysis":
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'FFT TOTAL':
+             if selected_optimizer3 == 'FFT TOTAL':
         
                 # Membuat Total grafik FFT
                 fig_fft = go.Figure(data=go.Scatter(x=fft_freq_total, y=np.abs(fft_result_total), mode='lines'))
