@@ -942,7 +942,7 @@ if selected == "HRV Analysis":
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-                if selected3 == "Spektrum":
+    if selected3 == "Spektrum":
                 fig = go.Figure()
         
                 fig.add_trace(go.Scatter(
