@@ -942,7 +942,166 @@ if selected == "HRV Analysis":
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-                
+                if selected3 == "Spektrum":
+            fig = go.Figure()
+    
+            fig.add_trace(go.Scatter(
+            x=x_vlf,
+            y=y_vlf,
+            fill='tozeroy',
+            fillcolor='rgba(166, 81, 216, 0.2)',
+            line=dict(color='rgba(166, 81, 216, 0.5)'),
+            name='VLF'
+            ))
+    
+          
+            fig.add_trace(go.Scatter(
+            x=x_lf,
+            y=y_lf,
+            fill='tozeroy',
+            fillcolor='rgba(81, 166, 216, 0.2)',
+            line=dict(color='rgba(81, 166, 216, 0.5)'),
+            name='LF'
+            ))
+    
+         
+            fig.add_trace(go.Scatter(
+            x=x_hf,
+            y=y_hf,
+            fill='tozeroy',
+            fillcolor='rgba(216, 166, 81, 0.2)',
+            line=dict(color='rgba(216, 166, 81, 0.5)'),
+            name='HF'
+            ))
+    
+         
+            fig.update_layout(
+            title="FFT Spectrum (Welch's periodogram)",
+            xaxis_title="Frequency (Hz)",
+            yaxis_title="Density",
+            xaxis=dict(range=[0, 0.5]),
+            yaxis=dict(range=[0, max(np.abs(fft_result_total))]),
+            legend=dict(x=0.8, y=0.95)
+           )
+            st.plotly_chart(fig)
+            
+            data = {
+            "Metric": ["Total Power (TP)", "VLF", "LF", "HF", "LF/HF"],
+            "Value": [total_power, VLF, LF_norm, HF_norm, LF_HF]
+            }
+            df = pd.DataFrame(data)
+            fig = go.Figure(data=[go.Table(
+              header=dict(values=list(df.columns),
+                    fill_color='paleturquoise',
+                    align='left'),
+              cells=dict(values=[df.Metric, df.Value],
+                   fill_color='lavender',
+                   align='left'))
+               ])
+            st.plotly_chart(fig)
+            
+            categories = ['Total Power (TP)', 'VLF', 'LF', 'HF']
+            values = [total_power, VLF, LF_norm, HF_norm]
+    
+            fig = go.Figure()
+    
+            fig.add_trace(go.Bar(
+            x=categories,
+            y=values,
+            marker_color=['blue', 'orange', 'green', 'red']
+            ))
+    
+           
+            fig.update_layout(
+            title='Bar Series dari VLF, LF, HF',
+            xaxis_title='Kategori',
+            yaxis_title='Nilai'
+            )
+            st.plotly_chart(fig)
+    
+            def determine_category(LF_norm, HF_norm, LF_HF):
+                if LF_norm < 0.2 and HF_norm < 0.2:
+                    return 1  # Low - Low
+                elif LF_norm >= 0.2 and LF_norm <= 0.6 and HF_norm < 0.2:
+                    return 2  # Normal - Low
+                elif LF_norm > 0.6 and HF_norm < 0.2:
+                    return 3  # High - Low
+                elif LF_norm < 0.2 and HF_norm >= 0.2 and HF_norm <= 0.6:
+                    return 4  # Low - Normal
+                elif LF_norm >= 0.2 and LF_norm <= 0.6 and HF_norm >= 0.2 and HF_norm <= 0.6:
+                    return 5  # Normal - Normal
+                elif LF_norm > 0.6 and HF_norm >= 0.2 and HF_norm <= 0.6:
+                    return 6  # High - Normal
+                elif LF_norm < 0.2 and HF_norm > 0.6:
+                    return 7  # Low - High
+                elif LF_norm >= 0.2 and LF_norm <= 0.6 and HF_norm > 0.6:
+                    return 8  # Normal - High
+                elif LF_norm > 0.6 and HF_norm > 0.6:
+                    return 9  # High - High
+                else:
+                    return 0  # Undefined
+            
+            
+            st.title("Autonomic Balance Diagram")
+            
+            category = determine_category(LF_norm, HF_norm, LF_HF)
+            st.write("Category:", category)
+            
+            
+            data = [
+                [7, 8, 9],
+                [4, 5, 6],
+                [1, 2, 3]
+             ]
+            
+            coordinates = {
+                1: (2, 0),
+                2: (2, 1),
+                3: (2, 2),
+                4: (1, 0),
+                5: (1, 1),
+                6: (1, 2),
+                7: (0, 0),
+                8: (0, 1),
+                9: (0, 2)
+              }
+    # Create heatmap with Plotly Express
+            fig = px.imshow(data, labels=dict(x="Sympathetic Level", y="Parasympathetic Level"), x=["Low", "Normal", "High"], y=["High", "Normal", "Low"])
+    
+    # Mark category on the heatmap
+            coord = coordinates.get(category, None)
+            if coord:
+                 fig.add_shape(
+                     type="circle",
+                     xref="x",
+                     yref="y",
+                     x0=coord[1],
+                     y0=coord[0],
+                     x1=coord[1] + 0.5,  
+                     y1=coord[0] + 0.5,  
+                    line_color="black"
+                )
+    
+    
+    # Add annotations for numbers
+            annotations = []
+            for i, row in enumerate(data):
+                for j, val in enumerate(row):
+                    annotations.append(dict(
+                    x=j, y=i, text=str(val), showarrow=False,
+                    font=dict(color="black", size=16)
+                    ))
+    
+            fig.update_layout(
+            title="Autonomic Balance Diagram",
+            annotations=annotations
+            )
+            fig.update_xaxes(ticks="outside", tickvals=[0, 1, 2])
+            fig.update_yaxes(ticks="outside", tickvals=[0, 1, 2])
+    
+    # Display heatmap in Streamlit
+            st.plotly_chart(fig)
+                    
     elif sub_selected == 'Non Liniear analysis':
         selected3 = option_menu(None, ["Detrended Fluctuation Analysis", "Poincare Plot Analysis", "Sample Entropy"], 
             menu_icon="cast", default_index=0, orientation="horizontal")
