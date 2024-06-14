@@ -615,7 +615,7 @@ if selected == "Signal Processing":
 if selected == "HRV Analysis":
     sub_selected = st.sidebar.radio(
         "Pilih Metode HRV Analysis",
-        ["Time Domain Analysis", "Frequency Domain analysis", "Non Liniear analysis "],
+        ["Time Domain Analysis", "Frequency Domain analysis", "Non Liniear analysis"],
         index=0
     )
 
@@ -762,12 +762,11 @@ if selected == "HRV Analysis":
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 101-151':
         
-                # Plotting dengan Plotly untuk subset data 101:151
+            if selected_optimizer3 == 'Data 100-150':
                 fig = go.Figure(data=go.Scatter(x=n_subset2, y=bpm_rr_baseline_subset2, mode='lines'))
                 fig.update_layout(
-                title="TACHOGRAM (Data 101-151)",
+                title="TACHOGRAM (Data 100-149)",
                 xaxis_title="n",
                 yaxis_title="BPM",
                 xaxis=dict(showline=True, showgrid=True),
@@ -775,43 +774,29 @@ if selected == "HRV Analysis":
                 )
                 st.plotly_chart(fig)
         
-                #  windowing Hamming
-                fig = go.Figure(data=go.Scatter(x=n_subset2, y=bpm_rr_baseline_windowed2, mode='lines'))
-                fig.update_layout(
-                title="TACHOGRAM (Data 101-151) with Hamming Window",
+                fig1 = go.Figure(data=go.Scatter(x=n_subset2, y=bpm_rr_baseline_windowed2, mode='lines'))
+                fig1.update_layout(
+                title="TACHOGRAM (Data 100-149) with Hamming Window",
                 xaxis_title="n",
                 yaxis_title="BPM",
                 xaxis=dict(showline=True, showgrid=True),
                 yaxis=dict(showline=True, showgrid=True)
                 )
-                st.plotly_chart(fig)
-
+                st.plotly_chart(fig1)
                 # Membuat grafik FFT
                 fig_fft = go.Figure(data=go.Scatter(x=fft_freq_half2, y=np.abs(fft_result_half2), mode='lines'))
                 fig_fft.update_layout(
-                title="FFT of TACHOGRAM 101:151",
+                title="FFT of TACHOGRAM 100:150",
                 xaxis_title="Frequency (Hz)",
                 yaxis_title="Magnitude",
                 xaxis=dict(showline=True, showgrid=True),
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 151-201':
-                # Plotting dengan Plotly untuk subset data 151:201
+            if selected_optimizer3 == 'Data 150-200':
                 fig = go.Figure(data=go.Scatter(x=n_subset3, y=bpm_rr_baseline_subset3, mode='lines'))
                 fig.update_layout(
-                title="TACHOGRAM (Data 151-201)",
-                xaxis_title="n",
-                yaxis_title="BPM",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig)
-                
-                #  windowing Hamming
-                fig = go.Figure(data=go.Scatter(x=n_subset3, y=bpm_rr_baseline_windowed3, mode='lines'))
-                fig.update_layout(
-                title="TACHOGRAM (Data 151-201) with Hamming Window",
+                title="TACHOGRAM (Data 150-199)",
                 xaxis_title="n",
                 yaxis_title="BPM",
                 xaxis=dict(showline=True, showgrid=True),
@@ -819,33 +804,29 @@ if selected == "HRV Analysis":
                 )
                 st.plotly_chart(fig)
         
+                fig1 = go.Figure(data=go.Scatter(x=n_subset3, y=bpm_rr_baseline_windowed3, mode='lines'))
+                fig1.update_layout(
+                title="TACHOGRAM (Data 150-199) with Hamming Window",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig1)
                 # Membuat grafik FFT
                 fig_fft = go.Figure(data=go.Scatter(x=fft_freq_half3, y=np.abs(fft_result_half3), mode='lines'))
                 fig_fft.update_layout(
-                title="FFT of TACHOGRAM 151:201",
+                title="FFT of TACHOGRAM 150-200",
                 xaxis_title="Frequency (Hz)",
                 yaxis_title="Magnitude",
                 xaxis=dict(showline=True, showgrid=True),
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 201-251':
-        
-                # Plotting dengan Plotly untuk subset data 201:251
+            if selected_optimizer3 == 'Data 200-250':
                 fig = go.Figure(data=go.Scatter(x=n_subset4, y=bpm_rr_baseline_subset4, mode='lines'))
                 fig.update_layout(
-                title="TACHOGRAM (Data 201-251)",
-                xaxis_title="n",
-                yaxis_title="BPM",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig)
-                
-                #  windowing Hamming
-                fig = go.Figure(data=go.Scatter(x=n_subset4, y=bpm_rr_baseline_windowed4, mode='lines'))
-                fig.update_layout(
-                title="TACHOGRAM (Data 201-251) with Hamming Window",
+                title="TACHOGRAM (Data 200-249)",
                 xaxis_title="n",
                 yaxis_title="BPM",
                 xaxis=dict(showline=True, showgrid=True),
@@ -853,33 +834,29 @@ if selected == "HRV Analysis":
                 )
                 st.plotly_chart(fig)
         
+                fig1 = go.Figure(data=go.Scatter(x=n_subset4, y=bpm_rr_baseline_windowed4, mode='lines'))
+                fig1.update_layout(
+                title="TACHOGRAM (Data 200-249) with Hamming Window",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig1)
                 # Membuat grafik FFT
                 fig_fft = go.Figure(data=go.Scatter(x=fft_freq_half4, y=np.abs(fft_result_half4), mode='lines'))
                 fig_fft.update_layout(
-                title="FFT of TACHOGRAM 201:251",
+                title="FFT of TACHOGRAM 200-250",
                 xaxis_title="Frequency (Hz)",
                 yaxis_title="Magnitude",
                 xaxis=dict(showline=True, showgrid=True),
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 251-301':
-
-                # Plotting dengan Plotly untuk subset data 251:301
+            if selected_optimizer3 == 'Data 250-300':
                 fig = go.Figure(data=go.Scatter(x=n_subset5, y=bpm_rr_baseline_subset5, mode='lines'))
                 fig.update_layout(
-                title="TACHOGRAM (Data 251-301)",
-                xaxis_title="n",
-                yaxis_title="BPM",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig)
-                
-                #  windowing Hamming
-                fig = go.Figure(data=go.Scatter(x=n_subset5, y=bpm_rr_baseline_windowed5, mode='lines'))
-                fig.update_layout(
-                title="TACHOGRAM (Data 251-301) with Hamming Window",
+                title="TACHOGRAM (Data 250-299)",
                 xaxis_title="n",
                 yaxis_title="BPM",
                 xaxis=dict(showline=True, showgrid=True),
@@ -887,32 +864,29 @@ if selected == "HRV Analysis":
                 )
                 st.plotly_chart(fig)
         
+                fig1 = go.Figure(data=go.Scatter(x=n_subset5, y=bpm_rr_baseline_windowed5, mode='lines'))
+                fig1.update_layout(
+                title="TACHOGRAM (Data 250-299) with Hamming Window",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig1)
                 # Membuat grafik FFT
                 fig_fft = go.Figure(data=go.Scatter(x=fft_freq_half5, y=np.abs(fft_result_half5), mode='lines'))
                 fig_fft.update_layout(
-                title="FFT of TACHOGRAM 251:301",
+                title="FFT of TACHOGRAM 250-300",
                 xaxis_title="Frequency (Hz)",
                 yaxis_title="Magnitude",
                 xaxis=dict(showline=True, showgrid=True),
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 301-351':
-                # Plotting dengan Plotly untuk subset data 301:351
+            if selected_optimizer3 == 'Data 300-350':
                 fig = go.Figure(data=go.Scatter(x=n_subset6, y=bpm_rr_baseline_subset6, mode='lines'))
                 fig.update_layout(
-                title="TACHOGRAM (Data 301-351)",
-                xaxis_title="n",
-                yaxis_title="BPM",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig)
-                
-                #  windowing Hamming
-                fig = go.Figure(data=go.Scatter(x=n_subset6, y=bpm_rr_baseline_windowed6, mode='lines'))
-                fig.update_layout(
-                title="TACHOGRAM (Data 301-351) with Hamming Window",
+                title="TACHOGRAM (Data 300-349)",
                 xaxis_title="n",
                 yaxis_title="BPM",
                 xaxis=dict(showline=True, showgrid=True),
@@ -920,10 +894,19 @@ if selected == "HRV Analysis":
                 )
                 st.plotly_chart(fig)
         
+                fig1 = go.Figure(data=go.Scatter(x=n_subset6, y=bpm_rr_baseline_windowed6, mode='lines'))
+                fig1.update_layout(
+                title="TACHOGRAM (Data 300-349) with Hamming Window",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig1)
                 # Membuat grafik FFT
                 fig_fft = go.Figure(data=go.Scatter(x=fft_freq_half6, y=np.abs(fft_result_half6), mode='lines'))
                 fig_fft.update_layout(
-                title="FFT of TACHOGRAM 301:351",
+                title="FFT of TACHOGRAM 300-350",
                 xaxis_title="Frequency (Hz)",
                 yaxis_title="Magnitude",
                 xaxis=dict(showline=True, showgrid=True),
@@ -931,177 +914,131 @@ if selected == "HRV Analysis":
                 )
                 st.plotly_chart(fig_fft)
             if selected_optimizer3 == 'FFT TOTAL':
-        
-                # Membuat Total grafik FFT
-                fig_fft = go.Figure(data=go.Scatter(x=fft_freq_total, y=np.abs(fft_result_total), mode='lines'))
+                # Plotting dengan Plotly
+                n = np.arange(0, ptp, 1, dtype=int)
+                fig = go.Figure(data=go.Scatter(x=n, y=bpm_rr_baseline, mode='lines'))
+                fig.update_layout(
+                title="TACHOGRAM",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig)
+
+                fig = go.Figure(data=go.Scatter(x=n, y=bpm_rr_baseline_windowed_total, mode='lines'))
+                fig.update_layout(
+                title="TACHOGRAM with Hamming Window",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig)
+
+                # Membuat grafik FFT
+                fig_fft = go.Figure(data=go.Scatter(x=fft_freq_half_total, y=np.abs(fft_result_half_total), mode='lines'))
                 fig_fft.update_layout(
-                title="FFT tOTAL Of TACHOGRAM",
+                title="FFT of TACHOGRAM 0:300",
                 xaxis_title="Frequency (Hz)",
                 yaxis_title="Magnitude",
                 xaxis=dict(showline=True, showgrid=True),
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-                
-        if selected3 == "Spektrum":
+            selected5 = option_menu(None, ["VLF", "LF", "HF"], 
+            menu_icon="cast", default_index=0, orientation="horizontal")
+            if selected5 == 'VLF':
+                # Plotting dengan Plotly
+                n = np.arange(0, ptp, 1, dtype=int)
+                fig = go.Figure(data=go.Scatter(x=n, y=fft_freq_half_total, mode='lines'))
+                fig.update_layout(
+                title="VLF",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig)
+            if selected5 == 'LF':
+                # Plotting dengan Plotly
+                n = np.arange(0, ptp, 1, dtype=int)
+                fig = go.Figure(data=go.Scatter(x=n, y=fft_freq_half_total, mode='lines'))
+                fig.update_layout(
+                title="LF",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig)
+            if selected5 == 'HF':
+                # Plotting dengan Plotly
+                n = np.arange(0, ptp, 1, dtype=int)
+                fig = go.Figure(data=go.Scatter(x=n, y=fft_freq_half_total, mode='lines'))
+                fig.update_layout(
+                title="HF",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig)
+    elif sub_selected == 'Non Liniear analysis':
+        selected3 = option_menu(None, ["Detrended Fluctuation Analysis", "Poincare Plot Analysis", "Sample Entropy"], 
+            menu_icon="cast", default_index=0, orientation="horizontal")
+        if selected3 == "Detrended Fluctuation Analysis":
+             new_title = '<p style="font-family:Georgia; color:black; font-size: 18px;">Detrended Fluctuation Analysis</p>'
+             st.markdown(new_title, unsafe_allow_html=True)
+             fig = go.Figure()
+             fig.add_trace(go.Scatter(x=list(range(1, len(dfa_ydata) + 1)), y=dfa_ydata, mode='lines+markers'))
+             fig.update_layout(title='Detrended Fluctuation Analysis (DFA)',
+                               xaxis_title='n',
+                               yaxis_title='Fluctuation')
+             st.plotly_chart(fig)
+        elif selected3 == "Poincare Plot Analysis":
+            new_title = '<p style="font-family:Georgia; color:black; font-size: 18px;">Poincare Plot Analysis</p>'
+            st.markdown(new_title, unsafe_allow_html=True)
             fig = go.Figure()
-    
-            fig.add_trace(go.Scatter(
-            x=x_vlf,
-            y=y_vlf,
-            fill='tozeroy',
-            fillcolor='rgba(166, 81, 216, 0.2)',
-            line=dict(color='rgba(166, 81, 216, 0.5)'),
-            name='VLF'
-            ))
-    
-          
-            fig.add_trace(go.Scatter(
-            x=x_lf,
-            y=y_lf,
-            fill='tozeroy',
-            fillcolor='rgba(81, 166, 216, 0.2)',
-            line=dict(color='rgba(81, 166, 216, 0.5)'),
-            name='LF'
-            ))
-    
-         
-            fig.add_trace(go.Scatter(
-            x=x_hf,
-            y=y_hf,
-            fill='tozeroy',
-            fillcolor='rgba(216, 166, 81, 0.2)',
-            line=dict(color='rgba(216, 166, 81, 0.5)'),
-            name='HF'
-            ))
-    
-         
-            fig.update_layout(
-            title="FFT Spectrum (Welch's periodogram)",
-            xaxis_title="Frequency (Hz)",
-            yaxis_title="Density",
-            xaxis=dict(range=[0, 0.5]),
-            yaxis=dict(range=[0, max(np.abs(fft_result_total))]),
-            legend=dict(x=0.8, y=0.95)
-           )
+            fig.add_trace(go.Scatter(x=poincare_x, y=poincare_y, mode='markers'))
+            fig.update_layout(title='Poincare Plot',
+                              xaxis_title='RR(n)',
+                              yaxis_title='RR(n+1)')
             st.plotly_chart(fig)
-            
             data = {
-            "Metric": ["Total Power (TP)", "VLF", "LF", "HF", "LF/HF"],
-            "Value": [total_power, VLF, LF_norm, HF_norm, LF_HF]
+                "Measures": ["SD1", "SD2"],
+                "Hasil": [sd1, sd2]
             }
             df = pd.DataFrame(data)
+
             fig = go.Figure(data=[go.Table(
-              header=dict(values=list(df.columns),
-                    fill_color='paleturquoise',
-                    align='left'),
-              cells=dict(values=[df.Metric, df.Value],
-                   fill_color='lavender',
-                   align='left'))
-               ])
-            st.plotly_chart(fig)
-            
-            categories = ['Total Power (TP)', 'VLF', 'LF', 'HF']
-            values = [total_power, VLF, LF_norm, HF_norm]
-    
-            fig = go.Figure()
-    
-            fig.add_trace(go.Bar(
-            x=categories,
-            y=values,
-            marker_color=['blue', 'orange', 'green', 'red']
-            ))
-    
-           
+                columnwidth=[80, 20],
+                header=dict(values=list(df.columns),
+                            fill_color='red',
+                            align='left',
+                            line_color='darkslategray',
+                            height=30),
+                cells=dict(values=[df["Measures"], df["Hasil"]],
+                           fill_color='white',
+                           align='left',
+                           line_color='darkslategray',
+                           height=25,
+                           font_size=12,
+                           ),
+            )])
+
             fig.update_layout(
-            title='Bar Series dari VLF, LF, HF',
-            xaxis_title='Kategori',
-            yaxis_title='Nilai'
+                width=400,
+                height=200,
+                margin=dict(l=10, r=10, t=10, b=10)
             )
+
             st.plotly_chart(fig)
-    
-            def determine_category(LF_norm, HF_norm, LF_HF):
-                if LF_norm < 0.2 and HF_norm < 0.2:
-                    return 1  # Low - Low
-                elif LF_norm >= 0.2 and LF_norm <= 0.6 and HF_norm < 0.2:
-                    return 2  # Normal - Low
-                elif LF_norm > 0.6 and HF_norm < 0.2:
-                    return 3  # High - Low
-                elif LF_norm < 0.2 and HF_norm >= 0.2 and HF_norm <= 0.6:
-                    return 4  # Low - Normal
-                elif LF_norm >= 0.2 and LF_norm <= 0.6 and HF_norm >= 0.2 and HF_norm <= 0.6:
-                    return 5  # Normal - Normal
-                elif LF_norm > 0.6 and HF_norm >= 0.2 and HF_norm <= 0.6:
-                    return 6  # High - Normal
-                elif LF_norm < 0.2 and HF_norm > 0.6:
-                    return 7  # Low - High
-                elif LF_norm >= 0.2 and LF_norm <= 0.6 and HF_norm > 0.6:
-                    return 8  # Normal - High
-                elif LF_norm > 0.6 and HF_norm > 0.6:
-                    return 9  # High - High
-                else:
-                    return 0  # Undefined
-            
-            
-            st.title("Autonomic Balance Diagram")
-            
-            category = determine_category(LF_norm, HF_norm, LF_HF)
-            st.write("Category:", category)
-            
-            
-            data = [
-                [7, 8, 9],
-                [4, 5, 6],
-                [1, 2, 3]
-             ]
-            
-            coordinates = {
-                1: (2, 0),
-                2: (2, 1),
-                3: (2, 2),
-                4: (1, 0),
-                5: (1, 1),
-                6: (1, 2),
-                7: (0, 0),
-                8: (0, 1),
-                9: (0, 2)
-              }
-    # Create heatmap with Plotly Express
-            fig = px.imshow(data, labels=dict(x="Sympathetic Level", y="Parasympathetic Level"), x=["Low", "Normal", "High"], y=["High", "Normal", "Low"])
-    
-    # Mark category on the heatmap
-            coord = coordinates.get(category, None)
-            if coord:
-                 fig.add_shape(
-                     type="circle",
-                     xref="x",
-                     yref="y",
-                     x0=coord[1],
-                     y0=coord[0],
-                     x1=coord[1] + 0.5,  
-                     y1=coord[0] + 0.5,  
-                    line_color="black"
-                )
-    
-    
-    # Add annotations for numbers
-            annotations = []
-            for i, row in enumerate(data):
-                for j, val in enumerate(row):
-                    annotations.append(dict(
-                    x=j, y=i, text=str(val), showarrow=False,
-                    font=dict(color="black", size=16)
-                    ))
-    
-            fig.update_layout(
-            title="Autonomic Balance Diagram",
-            annotations=annotations
-            )
-            fig.update_xaxes(ticks="outside", tickvals=[0, 1, 2])
-            fig.update_yaxes(ticks="outside", tickvals=[0, 1, 2])
-    
-    # Display heatmap in Streamlit
-            st.plotly_chart(fig)
+        elif selected3 == "Sample Entropy":
+             new_title = '<p style="font-family:Georgia; color:black; font-size: 18px;">Sample Entropy</p>'
+             st.markdown(new_title, unsafe_allow_html=True)
+             new_title = f'<p style="font-family:Georgia; color:black; font-size: 18px;">{sample_entropy}</p>'
+             st.markdown(new_title, unsafe_allow_html=True)
 
 
 if selected == "DWT":
