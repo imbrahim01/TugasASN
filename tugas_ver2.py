@@ -943,44 +943,6 @@ if selected == "HRV Analysis":
                 )
                 st.plotly_chart(fig_fft)
                 
-            selected5 = option_menu(None, ["VLF", "LF", "HF"], 
-            menu_icon="cast", default_index=0, orientation="horizontal")
-            if selected5 == 'VLF':
-                # Plotting dengan Plotly
-                n = np.arange(0, ptp, 1, dtype=int)
-                fig = go.Figure(data=go.Scatter(x=n, y=fft_freq_half_total, mode='lines'))
-                fig.update_layout(
-                title="VLF",
-                xaxis_title="n",
-                yaxis_title="BPM",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig)
-            if selected5 == 'LF':
-                # Plotting dengan Plotly
-                n = np.arange(0, ptp, 1, dtype=int)
-                fig = go.Figure(data=go.Scatter(x=n, y=fft_freq_half_total, mode='lines'))
-                fig.update_layout(
-                title="LF",
-                xaxis_title="n",
-                yaxis_title="BPM",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig)
-            if selected5 == 'HF':
-                # Plotting dengan Plotly
-                n = np.arange(0, ptp, 1, dtype=int)
-                fig = go.Figure(data=go.Scatter(x=n, y=fft_freq_half_total, mode='lines'))
-                fig.update_layout(
-                title="HF",
-                xaxis_title="n",
-                yaxis_title="BPM",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig)
     elif sub_selected == 'Non Liniear analysis':
         selected3 = option_menu(None, ["Detrended Fluctuation Analysis", "Poincare Plot Analysis", "Sample Entropy"], 
             menu_icon="cast", default_index=0, orientation="horizontal")
