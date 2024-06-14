@@ -698,7 +698,7 @@ if selected == "HRV Analysis":
             st.plotly_chart(fig)
         elif selected3 == 'Segmentation':
             optimizer_options3 = ['', 'Data 0-50', 'Data 50-100', 'Data 100-150', 'Data 150-200','Data 200-250','Data 250-300','Data 300-350','FFT TOTAL']
-            selected_optimizer3 = st.selectbox('Segmentation', optimizer_options3)
+             selected_optimizer3 = st.selectbox('Segmentation', optimizer_options3)
             if selected_optimizer3 == 'Data 0-50':
                 fig = go.Figure(data=go.Scatter(x=n_subset, y=bpm_rr_baseline_subset, mode='lines'))
                 fig.update_layout(
@@ -762,11 +762,12 @@ if selected == "HRV Analysis":
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
+            if selected_optimizer3 == 'Data 101-151':
         
-            if selected_optimizer3 == 'Data 100-150':
+                # Plotting dengan Plotly untuk subset data 101:151
                 fig = go.Figure(data=go.Scatter(x=n_subset2, y=bpm_rr_baseline_subset2, mode='lines'))
                 fig.update_layout(
-                title="TACHOGRAM (Data 100-149)",
+                title="TACHOGRAM (Data 101-151)",
                 xaxis_title="n",
                 yaxis_title="BPM",
                 xaxis=dict(showline=True, showgrid=True),
@@ -774,29 +775,43 @@ if selected == "HRV Analysis":
                 )
                 st.plotly_chart(fig)
         
-                fig1 = go.Figure(data=go.Scatter(x=n_subset2, y=bpm_rr_baseline_windowed2, mode='lines'))
-                fig1.update_layout(
-                title="TACHOGRAM (Data 100-149) with Hamming Window",
+                #  windowing Hamming
+                fig = go.Figure(data=go.Scatter(x=n_subset2, y=bpm_rr_baseline_windowed2, mode='lines'))
+                fig.update_layout(
+                title="TACHOGRAM (Data 101-151) with Hamming Window",
                 xaxis_title="n",
                 yaxis_title="BPM",
                 xaxis=dict(showline=True, showgrid=True),
                 yaxis=dict(showline=True, showgrid=True)
                 )
-                st.plotly_chart(fig1)
+                st.plotly_chart(fig)
+
                 # Membuat grafik FFT
                 fig_fft = go.Figure(data=go.Scatter(x=fft_freq_half2, y=np.abs(fft_result_half2), mode='lines'))
                 fig_fft.update_layout(
-                title="FFT of TACHOGRAM 100:150",
+                title="FFT of TACHOGRAM 101:151",
                 xaxis_title="Frequency (Hz)",
                 yaxis_title="Magnitude",
                 xaxis=dict(showline=True, showgrid=True),
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 150-200':
+            if selected_optimizer3 == 'Data 151-201':
+                # Plotting dengan Plotly untuk subset data 151:201
                 fig = go.Figure(data=go.Scatter(x=n_subset3, y=bpm_rr_baseline_subset3, mode='lines'))
                 fig.update_layout(
-                title="TACHOGRAM (Data 150-199)",
+                title="TACHOGRAM (Data 151-201)",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig)
+                
+                #  windowing Hamming
+                fig = go.Figure(data=go.Scatter(x=n_subset3, y=bpm_rr_baseline_windowed3, mode='lines'))
+                fig.update_layout(
+                title="TACHOGRAM (Data 151-201) with Hamming Window",
                 xaxis_title="n",
                 yaxis_title="BPM",
                 xaxis=dict(showline=True, showgrid=True),
@@ -804,29 +819,33 @@ if selected == "HRV Analysis":
                 )
                 st.plotly_chart(fig)
         
-                fig1 = go.Figure(data=go.Scatter(x=n_subset3, y=bpm_rr_baseline_windowed3, mode='lines'))
-                fig1.update_layout(
-                title="TACHOGRAM (Data 150-199) with Hamming Window",
-                xaxis_title="n",
-                yaxis_title="BPM",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig1)
                 # Membuat grafik FFT
                 fig_fft = go.Figure(data=go.Scatter(x=fft_freq_half3, y=np.abs(fft_result_half3), mode='lines'))
                 fig_fft.update_layout(
-                title="FFT of TACHOGRAM 150-200",
+                title="FFT of TACHOGRAM 151:201",
                 xaxis_title="Frequency (Hz)",
                 yaxis_title="Magnitude",
                 xaxis=dict(showline=True, showgrid=True),
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 200-250':
+            if selected_optimizer3 == 'Data 201-251':
+        
+                # Plotting dengan Plotly untuk subset data 201:251
                 fig = go.Figure(data=go.Scatter(x=n_subset4, y=bpm_rr_baseline_subset4, mode='lines'))
                 fig.update_layout(
-                title="TACHOGRAM (Data 200-249)",
+                title="TACHOGRAM (Data 201-251)",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig)
+                
+                #  windowing Hamming
+                fig = go.Figure(data=go.Scatter(x=n_subset4, y=bpm_rr_baseline_windowed4, mode='lines'))
+                fig.update_layout(
+                title="TACHOGRAM (Data 201-251) with Hamming Window",
                 xaxis_title="n",
                 yaxis_title="BPM",
                 xaxis=dict(showline=True, showgrid=True),
@@ -834,29 +853,33 @@ if selected == "HRV Analysis":
                 )
                 st.plotly_chart(fig)
         
-                fig1 = go.Figure(data=go.Scatter(x=n_subset4, y=bpm_rr_baseline_windowed4, mode='lines'))
-                fig1.update_layout(
-                title="TACHOGRAM (Data 200-249) with Hamming Window",
-                xaxis_title="n",
-                yaxis_title="BPM",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig1)
                 # Membuat grafik FFT
                 fig_fft = go.Figure(data=go.Scatter(x=fft_freq_half4, y=np.abs(fft_result_half4), mode='lines'))
                 fig_fft.update_layout(
-                title="FFT of TACHOGRAM 200-250",
+                title="FFT of TACHOGRAM 201:251",
                 xaxis_title="Frequency (Hz)",
                 yaxis_title="Magnitude",
                 xaxis=dict(showline=True, showgrid=True),
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 250-300':
+            if selected_optimizer3 == 'Data 251-301':
+
+                # Plotting dengan Plotly untuk subset data 251:301
                 fig = go.Figure(data=go.Scatter(x=n_subset5, y=bpm_rr_baseline_subset5, mode='lines'))
                 fig.update_layout(
-                title="TACHOGRAM (Data 250-299)",
+                title="TACHOGRAM (Data 251-301)",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig)
+                
+                #  windowing Hamming
+                fig = go.Figure(data=go.Scatter(x=n_subset5, y=bpm_rr_baseline_windowed5, mode='lines'))
+                fig.update_layout(
+                title="TACHOGRAM (Data 251-301) with Hamming Window",
                 xaxis_title="n",
                 yaxis_title="BPM",
                 xaxis=dict(showline=True, showgrid=True),
@@ -864,29 +887,32 @@ if selected == "HRV Analysis":
                 )
                 st.plotly_chart(fig)
         
-                fig1 = go.Figure(data=go.Scatter(x=n_subset5, y=bpm_rr_baseline_windowed5, mode='lines'))
-                fig1.update_layout(
-                title="TACHOGRAM (Data 250-299) with Hamming Window",
-                xaxis_title="n",
-                yaxis_title="BPM",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig1)
                 # Membuat grafik FFT
                 fig_fft = go.Figure(data=go.Scatter(x=fft_freq_half5, y=np.abs(fft_result_half5), mode='lines'))
                 fig_fft.update_layout(
-                title="FFT of TACHOGRAM 250-300",
+                title="FFT of TACHOGRAM 251:301",
                 xaxis_title="Frequency (Hz)",
                 yaxis_title="Magnitude",
                 xaxis=dict(showline=True, showgrid=True),
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
-            if selected_optimizer3 == 'Data 300-350':
+            if selected_optimizer3 == 'Data 301-351':
+                # Plotting dengan Plotly untuk subset data 301:351
                 fig = go.Figure(data=go.Scatter(x=n_subset6, y=bpm_rr_baseline_subset6, mode='lines'))
                 fig.update_layout(
-                title="TACHOGRAM (Data 300-349)",
+                title="TACHOGRAM (Data 301-351)",
+                xaxis_title="n",
+                yaxis_title="BPM",
+                xaxis=dict(showline=True, showgrid=True),
+                yaxis=dict(showline=True, showgrid=True)
+                )
+                st.plotly_chart(fig)
+                
+                #  windowing Hamming
+                fig = go.Figure(data=go.Scatter(x=n_subset6, y=bpm_rr_baseline_windowed6, mode='lines'))
+                fig.update_layout(
+                title="TACHOGRAM (Data 301-351) with Hamming Window",
                 xaxis_title="n",
                 yaxis_title="BPM",
                 xaxis=dict(showline=True, showgrid=True),
@@ -894,19 +920,10 @@ if selected == "HRV Analysis":
                 )
                 st.plotly_chart(fig)
         
-                fig1 = go.Figure(data=go.Scatter(x=n_subset6, y=bpm_rr_baseline_windowed6, mode='lines'))
-                fig1.update_layout(
-                title="TACHOGRAM (Data 300-349) with Hamming Window",
-                xaxis_title="n",
-                yaxis_title="BPM",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig1)
                 # Membuat grafik FFT
                 fig_fft = go.Figure(data=go.Scatter(x=fft_freq_half6, y=np.abs(fft_result_half6), mode='lines'))
                 fig_fft.update_layout(
-                title="FFT of TACHOGRAM 300-350",
+                title="FFT of TACHOGRAM 301:351",
                 xaxis_title="Frequency (Hz)",
                 yaxis_title="Magnitude",
                 xaxis=dict(showline=True, showgrid=True),
@@ -914,38 +931,18 @@ if selected == "HRV Analysis":
                 )
                 st.plotly_chart(fig_fft)
             if selected_optimizer3 == 'FFT TOTAL':
-                # Plotting dengan Plotly
-                n = np.arange(0, ptp, 1, dtype=int)
-                fig = go.Figure(data=go.Scatter(x=n, y=bpm_rr_baseline, mode='lines'))
-                fig.update_layout(
-                title="TACHOGRAM",
-                xaxis_title="n",
-                yaxis_title="BPM",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig)
-
-                fig = go.Figure(data=go.Scatter(x=n, y=bpm_rr_baseline_windowed_total, mode='lines'))
-                fig.update_layout(
-                title="TACHOGRAM with Hamming Window",
-                xaxis_title="n",
-                yaxis_title="BPM",
-                xaxis=dict(showline=True, showgrid=True),
-                yaxis=dict(showline=True, showgrid=True)
-                )
-                st.plotly_chart(fig)
-
-                # Membuat grafik FFT
-                fig_fft = go.Figure(data=go.Scatter(x=fft_freq_half_total, y=np.abs(fft_result_half_total), mode='lines'))
+        
+                # Membuat Total grafik FFT
+                fig_fft = go.Figure(data=go.Scatter(x=fft_freq_total, y=np.abs(fft_result_total), mode='lines'))
                 fig_fft.update_layout(
-                title="FFT of TACHOGRAM 0:300",
+                title="FFT tOTAL Of TACHOGRAM",
                 xaxis_title="Frequency (Hz)",
                 yaxis_title="Magnitude",
                 xaxis=dict(showline=True, showgrid=True),
                 yaxis=dict(showline=True, showgrid=True)
                 )
                 st.plotly_chart(fig_fft)
+                
             selected5 = option_menu(None, ["VLF", "LF", "HF"], 
             menu_icon="cast", default_index=0, orientation="horizontal")
             if selected5 == 'VLF':
