@@ -457,7 +457,7 @@ if selected == "Encyclopedia":
     st.link_button("Go to video", "https://youtu.be/MUhtAXPvVnE?si=rvYo04B8FCIcPT3I")
 if selected == "Signal Processing":
     selected1 = st.sidebar.radio(
-        "Pilih Metode HRV Analysis",
+        "",
         ["Information","Data & Graphic", "Filter","Method & Calculation"],
         index=0
     )
