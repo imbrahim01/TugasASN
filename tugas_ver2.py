@@ -1115,48 +1115,43 @@ if selected == "HRV Analysis":
                                yaxis_title='Fluctuation')
              st.plotly_chart(fig)
         elif selected3 == "Poincare Plot Analysis":
-            new_title = '<p style="font-family:Georgia; color:black; font-size: 18px;">Poincare Plot Analysis</p>'
-            st.markdown(new_title, unsafe_allow_html=True)
-            fig = go.Figure()
-            fig.add_trace(go.Scatter(x=poincare_x, y=poincare_y, mode='markers'))
-            fig.update_layout(title='Poincare Plot',
-                              xaxis_title='RR(n)',
-                              yaxis_title='RR(n+1)')
-            st.plotly_chart(fig)
-            data = {
-                "Measures": ["SD1", "SD2"],
-                "Hasil": [sd1, sd2]
-            }
-            df = pd.DataFrame(data)
-
-            fig = go.Figure(data=[go.Table(
-                columnwidth=[80, 20],
-                header=dict(values=list(df.columns),
-                            fill_color='red',
-                            align='left',
-                            line_color='darkslategray',
-                            height=30),
-                cells=dict(values=[df["Measures"], df["Hasil"]],
-                           fill_color='white',
-                           align='left',
-                           line_color='darkslategray',
-                           height=25,
-                           font_size=12,
-                           ),
-            )])
-
-            fig.update_layout(
-                width=400,
-                height=200,
-                margin=dict(l=10, r=10, t=10, b=10)
-            )
-
-            st.plotly_chart(fig)
-        elif selected3 == "Sample Entropy":
-             new_title = '<p style="font-family:Georgia; color:black; font-size: 18px;">Sample Entropy</p>'
-             st.markdown(new_title, unsafe_allow_html=True)
-             new_title = f'<p style="font-family:Georgia; color:black; font-size: 18px;">{sample_entropy}</p>'
-             st.markdown(new_title, unsafe_allow_html=True)
+             temp = 0
+             interval = np.zeros(np.size(thrqrs))
+             BPM = np.zeros(np.size(thrqrs))
+            
+            # Calculate intervals and BPM
+             for n in range(1, ptp):
+                interval[n] = (peak[n] - peak[n-1]) * (1/fs)
+                BPM[n] = 60 / interval[n]
+                temp += BPM[n]
+                rata = temp / n  # Modified to avoid division by zero
+            
+             st.write("Intervals:", interval)
+            
+            # Define the Poincaré plot function
+             def create_poincare_plot(interval):
+                x = interval[:-1]
+                y = interval[1:]
+            
+                # Plot Poincaré Plot
+                plt.figure(figsize=(6, 6))
+                plt.scatter(x, y, s=5, c='blue', alpha=0.5)
+                plt.title('Poincaré Plot of RR Intervals')
+                plt.xlabel('RR(n)')
+                plt.ylabel('RR(n+1)')
+                plt.grid(True)
+                st.pyplot(plt)
+            
+            create_poincare_plot(interval)
+            
+            # Calculate SD1 and SD2
+             diff_intervals = np.diff(interval)
+             mean_interval = np.mean(interval)
+             SD1 = np.std(diff_intervals) / np.sqrt(2)
+             SD2 = np.sqrt(2 * np.std(interval)*2 - SD1*2)
+            
+             st.write(f"SD1: {SD1}")
+             st.write(f"SD2: {SD2}")
 
 
 if selected == "DWT":
