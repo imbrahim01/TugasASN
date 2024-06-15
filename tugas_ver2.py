@@ -1103,18 +1103,6 @@ if selected == "HRV Analysis":
                 st.plotly_chart(fig)
                         
     elif sub_selected == 'Non Liniear analysis':
-        selected3 = option_menu(None, ["Detrended Fluctuation Analysis", "Poincare Plot Analysis", "Sample Entropy"], 
-            menu_icon="cast", default_index=0, orientation="horizontal")
-        if selected3 == "Detrended Fluctuation Analysis":
-             new_title = '<p style="font-family:Georgia; color:black; font-size: 18px;">Detrended Fluctuation Analysis</p>'
-             st.markdown(new_title, unsafe_allow_html=True)
-             fig = go.Figure()
-             fig.add_trace(go.Scatter(x=list(range(1, len(dfa_ydata) + 1)), y=dfa_ydata, mode='lines+markers'))
-             fig.update_layout(title='Detrended Fluctuation Analysis (DFA)',
-                               xaxis_title='n',
-                               yaxis_title='Fluctuation')
-             st.plotly_chart(fig)
-        elif selected3 == "Poincare Plot Analysis":
              temp = 0
              interval = np.zeros(np.size(thrqrs))
              BPM = np.zeros(np.size(thrqrs))
