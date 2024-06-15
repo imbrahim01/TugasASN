@@ -456,9 +456,11 @@ if selected == "Encyclopedia":
     st.markdown(content, unsafe_allow_html=True)
     st.link_button("Go to video", "https://youtu.be/MUhtAXPvVnE?si=rvYo04B8FCIcPT3I")
 if selected == "Signal Processing":
-    selected1 = option_menu(None, ["Information","Data & Graphic", "Filter","Method & Calculation"], 
-    menu_icon="cast", default_index=0, orientation="horizontal")
-    
+    selected1 = st.sidebar.radio(
+        "Pilih Metode HRV Analysis",
+        ["Information","Data & Graphic", "Filter","Method & Calculation"],
+        index=0
+    )
     if selected1 == 'Information':
         st.title("d")
     elif selected1 == 'Data & Graphic':
