@@ -1114,7 +1114,6 @@ if selected == "HRV Analysis":
                 temp += BPM[n]
                 rata = temp / n  # Modified to avoid division by zero
             
-             st.write("Intervals:", interval)
             
             # Define the Poincaré plot function
              def create_poincare_plot(interval):
