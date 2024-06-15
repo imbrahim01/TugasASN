@@ -1142,7 +1142,7 @@ if selected == "HRV Analysis":
                 plt.grid(True)
                 st.pyplot(plt)
             
-            create_poincare_plot(interval)
+             create_poincare_plot(interval)
             
             # Calculate SD1 and SD2
              diff_intervals = np.diff(interval)
