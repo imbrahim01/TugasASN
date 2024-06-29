@@ -1041,11 +1041,11 @@ if selected == "HRV Analysis":
 
             
             # Perform Poincare analysis
-              results = nl.poincare(nni=selisih[n])
+             results = nl.poincare(nni=selisih[n])
             
             # Display SD1 and SD2
-              st.write(f"SD1: {results['sd1']}")
-              st.write(f"SD2: {results['sd2']}")
+             st.write(f"SD1: {results['sd1']}")
+             st.write(f"SD2: {results['sd2']}")
 
 
 
