@@ -1057,7 +1057,7 @@ if selected == "HRV Analysis":
                     return s
         
                 result = calculate_s(sd1, sd2)
-                st.write(f"S : {result * 1000}")
+                st.write(f"S : {result * 100000}")
         
 
 
