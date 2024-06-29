@@ -1046,7 +1046,7 @@ if selected == "HRV Analysis":
         
                 def calculate_sd2(SDNN, SDSD):
                     sd2 = math.sqrt(2 * SDNN**2 - 0.5 * SDSD**2)
-                return sd2
+                    return sd2
             
             
                 sd2 = calculate_sd2(SDNN, SDSD)
@@ -1054,7 +1054,7 @@ if selected == "HRV Analysis":
         
                 def calculate_s(sd1, sd2):
                     s = math.pi * sd1 * sd2
-                return s
+                    return s
         
                 result = calculate_s(sd1, sd2)
                 st.write(f"S : {result}")
