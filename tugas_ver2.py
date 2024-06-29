@@ -8,6 +8,8 @@ import streamlit as st
 from streamlit_lottie import st_lottie
 from st_click_detector import click_detector
 import plotly.express as px
+import biosppy
+import pyhrv.nonlinear as nl
 
 
 ########
@@ -1032,6 +1034,20 @@ if selected == "HRV Analysis":
             
              st.write(f"SD1: {SD1}")
              st.write(f"SD2: {SD2}")
+        # Streamlit app
+             st.title("Poincare Plot Analysis with PyHRV")
+            
+            # User input for selecting 'n' value
+
+            
+            # Perform Poincare analysis
+              results = nl.poincare(nni=selisih[n])
+            
+            # Display SD1 and SD2
+              st.write(f"SD1: {results['sd1']}")
+              st.write(f"SD2: {results['sd2']}")
+
+
 
 
 
