@@ -998,55 +998,44 @@ if selected == "HRV Analysis":
                 st.plotly_chart(fig)
                         
     elif sub_selected == 'Non Liniear analysis':
-             temp = 0
-             interval = np.zeros(np.size(thrqrs))
-             BPM = np.zeros(np.size(thrqrs))
-            
-            # Calculate intervals and BPM
-             for n in range(1, ptp):
-                interval[n] = (peak[n] - peak[n-1]) * (1/fs)
-                BPM[n] = 60 / interval[n]
-                temp += BPM[n]
-                rata = temp / n  # Modified to avoid division by zero
-            
-            
-            # Define the Poincaré plot function
-             def create_poincare_plot(interval):
-                x = interval[:-1]
-                y = interval[1:]
-            
-                # Plot Poincaré Plot
-                plt.figure(figsize=(6, 6))
-                plt.scatter(x, y, s=5, c='blue', alpha=0.5)
-                plt.title('Poincaré Plot of RR Intervals')
-                plt.xlabel('RR(n)')
-                plt.ylabel('RR(n+1)')
-                plt.grid(True)
-                st.pyplot(plt)
-            
-             create_poincare_plot(interval)
-            
-            # Calculate SD1 and SD2
-             diff_intervals = np.diff(interval)
-             mean_interval = np.mean(interval)
-             SD1 = np.std(diff_intervals) / np.sqrt(2)
-             SD2 = np.sqrt(2 * np.std(interval)*2 - SD1*2)
-            
-             st.write(f"SD1: {SD1}")
-             st.write(f"SD2: {SD2}")
-        # Streamlit app
-             st.title("Poincare Plot Analysis with PyHRV")
-            
-            # User input for selecting 'n' value
-
-            
-            # Perform Poincare analysis
-             results = nl.poincare(nni=selisih[n])
-            
-            # Display SD1 and SD2
-             st.write(f"SD1: {results['sd1']}")
-             st.write(f"SD2: {results['sd2']}")
-
+                temp = 0
+                interval = np.zeros(ptp)
+                BPM = np.zeros(ptp)
+                
+                # Calculate intervals and BPM
+                for n in range(1, ptp):
+                    interval[n] = (peak[n] - peak[n-1]) * (1/fs)
+                    BPM[n] = 60 / interval[n]
+                    temp += BPM[n]
+                    rata = temp / n  # Modified to avoid division by zero
+                
+                # Scale intervals by 1000
+                scaled_interval = interval * 1000
+                
+                # Define the Poincaré plot function
+                def create_poincare_plot(scaled_interval):
+                    x = scaled_interval[:-1]
+                    y = scaled_interval[1:]
+                
+                    # Plot Poincaré Plot
+                    plt.figure(figsize=(6, 6))
+                    plt.scatter(x, y, s=5, c='blue', alpha=0.5)
+                    plt.title('Poincaré Plot of RR Intervals')
+                    plt.xlabel('RR(n) * 1000')
+                    plt.ylabel('RR(n+1) * 1000')
+                    plt.grid(True)
+                    st.pyplot(plt)
+                
+                create_poincare_plot(scaled_interval)
+                
+                # Calculate SD1 and SD2
+                diff_intervals = np.diff(scaled_interval)
+                mean_interval = np.mean(scaled_interval)
+                SD1 = np.std(diff_intervals) / np.sqrt(2)
+                SD2 = np.sqrt(2 * np.std(scaled_interval)**2 - SD1**2)
+                
+                st.write(f"SD1: {SD1}")
+                st.write(f"SD2: {SD2}")
 
 
 
