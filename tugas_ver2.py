@@ -1032,10 +1032,33 @@ if selected == "HRV Analysis":
                 diff_intervals = np.diff(scaled_interval)
                 mean_interval = np.mean(scaled_interval)
                 SD1 = np.std(diff_intervals) / np.sqrt(2)
-                SD2 = np.sqrt(2 * np.std(scaled_interval)*2 - SD1*2)
+                SD2 = np.sqrt(2 * np.std(scaled_interval)**2 - SD1**2)
                 
                 st.write(f"SD1: {SD1}")
                 st.write(f"SD2: {SD2}")
+
+                def calculate_sd1(SDSD):
+                    sd1 = math.sqrt(0.5 * SDSD**2)
+                    return sd1
+                
+                sd1 = calculate_sd1(SDSD)
+                st.write(f"SD1 : {sd1}")
+        
+                def calculate_sd2(SDNN, SDSD):
+                sd2 = math.sqrt(2 * SDNN**2 - 0.5 * SDSD**2)
+                return sd2
+            
+            
+                sd2 = calculate_sd2(SDNN, SDSD)
+                st.write(f"SD2 : {sd2}")
+        
+                def calculate_s(sd1, sd2):
+                s = math.pi * sd1 * sd2
+                return s
+        
+                result = calculate_s(sd1, sd2)
+               st.write(f"S : {result}")
+        
 
 
 
