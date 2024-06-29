@@ -1042,7 +1042,7 @@ if selected == "HRV Analysis":
                     return sd1
                 
                 sd1 = calculate_sd1(SDSD)
-                st.write(f"SD1 : {sd1}")
+                st.write(f"SD1 : {sd1*1000}")
         
                 def calculate_sd2(SDNN, SDSD):
                     sd2 = math.sqrt(2 * SDNN**2 - 0.5 * SDSD**2)
@@ -1050,14 +1050,14 @@ if selected == "HRV Analysis":
             
             
                 sd2 = calculate_sd2(SDNN, SDSD)
-                st.write(f"SD2 : {sd2}")
+                st.write(f"SD2 : {sd2*1000}")
         
                 def calculate_s(sd1, sd2):
                     s = math.pi * sd1 * sd2
                     return s
         
                 result = calculate_s(sd1, sd2)
-                st.write(f"S : {result}")
+                st.write(f"S : {result * 1000}")
         
 
 
