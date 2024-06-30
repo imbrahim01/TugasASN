@@ -355,7 +355,17 @@ if selected == "Signal Processing":
         index=0
     )
     if selected1 == 'Information':
-        st.title("d")
+        st.title("Signal Processing")
+        new_title = '<p style="font-family:Georgia; color:blue; font-size: 23px; text-align: left;">Gambar di atas menjelaskan proses deteksi gelombang R dalam sinyal elektrokardiogram (ECG) menggunakan algoritma QRS Detection.Berikut merupakan langkah-langkah umum untuk melakukan signal processing :</p>'
+        st.markdown(new_title, unsafe_allow_html=True)
+        new_title = '<p style="font-family:Georgia; color:black; font-size: 20px; text-align: justify;">1. Bandpass Filter (IIR)Proses pertama adalah penerapan filter bandpass yang terdiri dari filter lowpass dan highpass. Filter ini berfungsi untuk menghilangkan noise dan komponen frekuensi yang tidak diinginkan dari sinyal ECG asli.Lowpass Filter berfungsi untuk menghilangkan komponen frekuensi tinggi. Sedangkan highpass Filter berfungsi untuk menghilangkan komponen frekuensi rendah.</p>'
+        st.markdown(new_title, unsafe_allow_html=True)
+        new_title = '<p style="font-family:Georgia; color:black; font-size: 20px; text-align: justify;">2. Differentiator Setelah sinyal difilter, langkah berikutnya adalah proses diferensiasi. Differentiator digunakan untuk menekankan komponen frekuensi tinggi dalam sinyal, yang membantu menyoroti fitur-fitur penting seperti gelombang R dalam sinyal ECG.</p>'
+        st.markdown(new_title, unsafe_allow_html=True)
+        new_title = '<p style="font-family:Georgia; color:black; font-size: 20px; text-align: justify;">3. Squaring OperationSetelah diferensiasi, sinyal kemudian dikuadratkan. Operasi pengkuadratan ini memperkuat amplitudo sinyal dan memastikan bahwa semua nilai menjadi positif. Hal ini membantu dalam proses deteksi berikutnya dengan memperjelas puncak-puncak dalam sinyal.</p>'
+        st.markdown(new_title, unsafe_allow_html=True)
+        new_title = '<p style="font-family:Georgia; color:black; font-size: 20px; text-align: justify;">4. Moving Average Filter Langkah terakhir adalah penerapan filter rata-rata bergerak. Filter ini menghaluskan sinyal dan membantu mengurangi noise yang tersisa setelah langkah-langkah sebelumnya. Filter rata-rata bergerak juga membantu dalam menyoroti tren utama dalam sinyal.</p>'
+        st.markdown(new_title, unsafe_allow_html=True
     elif selected1 == 'Data & Graphic':
         st.title('Data & Graphic Input')
         st.header("Data Input")
